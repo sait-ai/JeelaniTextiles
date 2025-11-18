@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+<head>
+  <!-- Meta & SEO Optimization -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <title>Admin Login | Jeelani Textiles</title>
+  <meta name="description" content="Secure admin portal for Jeelani Textiles inventory management">
+  <meta name="keywords" content="Jeelani Textiles admin login, admin dashboard access">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Jeelani Textiles">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Enhanced Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://www.gstatic.com https://unpkg.com 'unsafe-inline'; 
+    style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; 
+    font-src 'self' https://fonts.gstatic.com; 
+    img-src 'self' data: https:; 
+    connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebaseio.com;
+    frame-src 'none';
+  ">
+
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://identitytoolkit.googleapis.com">
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Critical Inline CSS -->
+  <style>
+    /* CSS Variables */
+    :root {
+      --color-background: #ffffff;
+      --color-surface: #f8f9fa;
+      --color-primary-500: #f39c12;
+      --color-primary-600: #e08e0b;
+      --color-neutral-100: #ffffff;
+      --color-neutral-800: #2c3e50;
+      --color-error: #e74c3c;
+      --color-success: #27ae60;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --box-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --z-index-max: 9999;
+      --transition-base: 0.3s ease;
+    }
+
+    [data-theme="dark"] {
+      --color-background: #1a1a1a;
+      --color-surface: #2d2d2d;
+      --color-neutral-100: #e0e0e0;
+      --color-neutral-800: #f5f5f5;
+    }
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: var(--color-neutral-100);
+      padding: 8px 16px;
+      z-index: var(--z-index-max);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0 0 4px 0;
+      transition: top var(--transition-base);
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--color-neutral-800);
+      outline-offset: 2px;
+    }
+
+    /* Login Container */
+    .login-container {
+      max-width: 420px;
+      margin: 4rem auto 2rem;
+      padding: 2.5rem;
+      background: var(--color-background);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Logo */
+    .logo {
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: 150px;
+      height: auto;
+    }
+
+    /* Form Styles */
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--color-neutral-800);
+      transition: opacity var(--transition-base);
+    }
+
+    .password-toggle:hover {
+      opacity: 0.7;
+    }
+
+    .password-toggle:focus {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Button Loader */
+    .btn-loader {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 8px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Utility Classes */
+    .hidden { 
+      display: none !important; 
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Form Validation States */
+    .form-group--error .form-control {
+      border-color: var(--color-error);
+      background-color: rgba(231, 76, 60, 0.05);
+    }
+
+    .form-group--error .form-error {
+      display: block;
+      color: var(--color-error);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-error { 
+      display: none; 
+    }
+
+    /* Button Hover Effect */
+    .btn--primary {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, background-color var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      background-color: var(--color-primary-600);
+      box-shadow: 0 6px 12px rgba(243, 156, 18, 0.3);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0);
+    }
+
+    .btn--primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Form Message */
+    .form-msg {
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .form-msg--error {
+      display: block;
+      background-color: rgba(231, 76, 60, 0.1);
+      color: var(--color-error);
+      border: 1px solid var(--color-error);
+    }
+
+    .form-msg--success {
+      display: block;
+      background-color: rgba(39, 174, 96, 0.1);
+      color: var(--color-success);
+      border: 1px solid var(--color-success);
+    }
+
+    /* Dark Mode Enhancements */
+    [data-theme="dark"] .login-container {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="dark"] .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.1));
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Required Field Indicator */
+    .required {
+      color: var(--color-error);
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* Form Icon */
+    .form-icon {
+      margin-right: 8px;
+      vertical-align: middle;
+      opacity: 0.7;
+    }
+
+    /* Security Badge */
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: rgba(39, 174, 96, 0.1);
+      border-radius: 6px;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--color-success);
+    }
+
+    .security-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+
+  <!-- Fonts & Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin>
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Schema.org Markup (Admin Login) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Admin Login - Jeelani Textiles",
+    "description": "Secure administrative access portal for Jeelani Textiles management system",
+    "url": "https://jeelanitextiles.com/pages/admin-login.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Jeelani Textiles",
+      "url": "https://jeelanitextiles.com"
+    },
+    "accessMode": "textual",
+    "accessModeSufficient": "textual",
+    "isAccessibleForFree": false
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header" data-aos="fade-up">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" class="logo" width="150" height="auto">
+        <h1 class="section__title">Admin Login</h1>
+        <p class="section__subtitle">Access the Jeelani Textiles admin dashboard</p>
+      </div>
+
+      <!-- Login Form Section -->
+      <section class="section login-container" data-aos="fade-up" data-aos-delay="100" aria-labelledby="login-heading">
+        <h2 id="login-heading" class="visually-hidden">Login Form</h2>
+        
+        <form id="adminLoginForm" class="admin-form" novalidate>
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="adminEmail" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+              </svg>
+              Email Address <span class="required" aria-label="required">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="adminEmail" 
+              name="email" 
+              class="form-control" 
+              placeholder="admin@jeelanitextiles.com" 
+              required 
+              autocomplete="username"
+              aria-describedby="adminEmailHelp adminEmailError"
+              aria-invalid="false"
+              data-error="Please enter a valid email address"
+            >
+            <small id="adminEmailHelp" class="form-helper">Enter your registered admin email</small>
+            <span class="form-error" id="adminEmailError" role="alert"></span>
+          </div>
+          
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="adminPassword" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                <path d="M12 2a5 5 0 0 0-5 5v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v2H9V7a3 3 0 0 1 3-3z" fill="currentColor"/>
+              </svg>
+              Password <span class="required" aria-label="required">*</span>
+            </label>
+            <div class="password-wrapper">
+              <input 
+                type="password" 
+                id="adminPassword" 
+                name="password" 
+                class="form-control" 
+                placeholder="Enter your password" 
+                required 
+                minlength="6"
+                autocomplete="current-password"
+                aria-describedby="adminPasswordHelp adminPasswordError"
+                aria-invalid="false"
+                data-error="Password is required (minimum 6 characters)"
+              >
+              <button 
+                type="button" 
+                id="passwordToggle" 
+                class="password-toggle" 
+                aria-label="Show password"
+                tabindex="0"
+              >
+                <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <svg class="eye-off-icon hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                  <path d="M1 1l22 22"/>
+                </svg>
+              </button>
+            </div>
+            <small id="adminPasswordHelp" class="form-helper">Minimum 6 characters</small>
+            <span class="form-error" id="adminPasswordError" role="alert"></span>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn--primary submit-btn" id="loginBtn">
+            <span class="btn-text">Login to Dashboard</span>
+            <span class="btn-loader hidden" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 0 0-18zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" opacity="0.25"/>
+                <path d="M12 3a9 9 0 0 1 9 9"/>
+              </svg>
+            </span>
+          </button>
+
+          <!-- Form Message -->
+          <div id="formMsg" class="form-msg" role="alert" aria-live="polite" aria-atomic="true"></div>
+        </form>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span>Secured with 256-bit encryption</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- CDN Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+  <!-- Main Application Entry Point -->
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+
+<head>
+  <!-- Meta & Security -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f39c12" />
+  <title>Jeelani Textiles – Handcrafted Ethnic Elegance</title>
+  <meta name="description" content="Premium handloom sarees, designer kurtis & bridal lehengas. Ethically crafted traditional wear with modern elegance." />
+  <meta name="keywords" content="handloom sarees, designer kurtis, bridal lehengas, ethnic fashion, Jeelani Textiles" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Jeelani Textiles" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://firestore.googleapis.com https://*.firebaseio.com https://ipapi.co; frame-src 'self' https://www.google.com https://maps.google.com;" />
+
+  <!-- Social Meta -->
+  <meta property="og:title" content="Jeelani Textiles – Handcrafted Ethnic Elegance" />
+  <meta property="og:description" content="Discover authentic handcrafted ethnic wear. Shop our premium collection of sarees, kurtis, and lehengas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeelani-textiles.web.app" />
+  <meta property="og:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jeelani Textiles handloom collection" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@jeelanitextiles" />
+
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://firestore.googleapis.com" />
+  <link rel="preload" href="css/style.css" as="style" />
+  <link rel="preload" href="assets/images/hero-bg.webp" as="image" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/favicon-light.ico" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)" />
+  <link rel="apple-touch-icon" href="assets/images/icons/icon-192x192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Jeelani Textiles",
+    "url": "https://jeelani-textiles.web.app",
+    "logo": "https://jeelani-textiles.web.app/assets/images/logo.webp",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-98456-77415",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.facebook.com/jeelanitextiles",
+      "https://www.instagram.com/jeelanitextiles"
+    ]
+  }
+  </script>
+
+  <!-- Critical CSS (Optimized) -->
+  <style>
+    :root {
+      --color-primary-500: #f39c12;
+      --z-index-loader: 9999;
+      --transition-theme: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      --font-size-h1: 2.5rem;
+      --font-size-h2: 2rem;
+      --font-size-h3: 1.5rem;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--color-background);
+      z-index: var(--z-index-loader);
+      display: grid;
+      place-items: center;
+      transition: opacity var(--transition-theme);
+    }
+
+    .loader-spinner {
+      border: 4px solid rgba(243, 156, 18, 0.2);
+      border-top: 4px solid var(--color-primary-500);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    .loader-progress {
+      font-size: 1.2rem;
+      color: var(--color-primary-500);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus { top: 0; }
+
+    :root[data-theme="light"] {
+      --color-background: #fff;
+      --color-text: #333;
+      --color-primary-500: #f39c12;
+    }
+
+    :root[data-theme="dark"] {
+      --color-background: #333;
+      --color-text: #fff;
+      --color-primary-500: #f39c12;
+    }
+
+    body {
+      background-color: var(--color-background);
+      color: var(--color-text);
+      transition: background-color var(--transition-theme), color var(--transition-theme);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 { font-size: var(--font-size-h1); }
+    h2 { font-size: var(--font-size-h2); }
+    h3 { font-size: var(--font-size-h3); }
+
+    .btn, .navbar__link {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+
+    .btn:active::after {
+      width: 200%;
+      height: 200%;
+    }
+
+    .btn:hover, .navbar__link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:active, .navbar__link:active { transform: scale(0.98); }
+
+    :focus {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-aos], .loader-spinner { animation: none !important; opacity: 1 !important; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --font-size-h1: 2rem; --font-size-h2: 1.75rem; }
+
+      .navbar__menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--color-background);
+      }
+
+      .navbar__menu.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-background);
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      body.menu-open { overflow: hidden; }
+
+      #menuToggle { display: block; }
+
+      .hero__container { grid-template-columns: 1fr; text-align: center; }
+
+      .hero__image-wrapper { margin-top: 20px; }
+
+      .map-container iframe { height: 200px; }
+    }
+
+    #menuToggle { display: none; }
+
+    .hero__image-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .floating-btn {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .navbar {
+      padding: 20px 0;
+      transition: padding 0.3s;
+    }
+
+    .navbar.shrink { padding: 10px 0; }
+
+    .product-card {
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: rotate(3deg) scale(1.05);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: slideIn 0.5s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100px); }
+      to { transform: translateY(0); }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: var(--color-background);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .close:hover, .close:focus {
+      color: #000;
+      text-decoration: none;
+    }
+
+    #scrollIndicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: var(--color-primary-500);
+      width: 0;
+      z-index: 1000;
+    }
+  </style>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <!-- Scroll Indicator -->
+  <div id="scrollIndicator"></div>
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Loader -->
+  <div id="loader" class="loader" aria-live="polite" aria-labelledby="loader-label">
+    <div class="loader-spinner" aria-hidden="true"></div>
+    <span class="loader-progress" aria-hidden="true">0%</span>
+    <span id="loader-label" class="visually-hidden">Loading progress</span>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar section">
+    <div class="container navbar__container">
+      <a href="/" class="navbar__logo" aria-label="Jeelani Textiles Home">
+        <img src="assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="lazy" />
+      </a>
+      <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="/" class="navbar__link active" aria-current="page">Home</a></li>
+          <li><a href="/pages/products.html" class="navbar__link">Collection</a></li>
+          <li><a href="/pages/faq.html" class="navbar__link">FAQ</a></li>
+          <li><a href="/pages/contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="/pages/admin-login.html" class="navbar__link">Admin</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__actions">
+        <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+        <button id="themeToggle" class="icon-btn" aria-label="Switch to dark theme" data-tooltip="Toggle theme">
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="sun-icon" style="display:none;" aria-hidden="true">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero section" role="banner">
+      <div class="container hero__container grid">
+        <div data-aos="fade-right">
+          <h1 class="hero__title">Elevate Your Elegance with <span class="text-highlight">Jeelani Textiles</span></h1>
+          <p class="hero__subtitle">Discover handloom sarees, designer kurtis, and bridal lehengas that blend tradition with trend. Handcrafted for the modern connoisseur.</p>
+          <div class="hero__cta-group">
+            <a href="/pages/products.html" class="btn btn--primary" data-aos="zoom-in">Explore Collection</a>
+            <a href="#featured" class="btn btn--outline" data-aos="zoom-in" data-aos-delay="150">Featured Picks</a>
+          </div>
+        </div>
+        <div class="hero__image-wrapper" data-aos="fade-left" aria-label="Jeelani Textiles Collection" style="background: url('assets/images/hero-bg.webp') no-repeat center; background-attachment: fixed; background-size: cover; height: 400px;"></div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured" class="section featured-products">
+      <div class="container">
+        <h2 class="section__title text-center" data-aos="fade-up">Handpicked Favorites</h2>
+        <p class="section__subtitle text-center" data-aos="fade-up" data-aos-delay="50">Curated collections for every occasion</p>
+
+        <div class="filter-bar" role="tablist" aria-label="Product filters">
+          <button class="filter-btn active" data-category="all" role="tab" aria-selected="true" aria-controls="productGrid">All</button>
+          <button class="filter-btn" data-category="sarees" role="tab" aria-selected="false" aria-controls="productGrid">Sarees</button>
+          <button class="filter-btn" data-category="kurtis" role="tab" aria-selected="false" aria-controls="productGrid">Kurtis</button>
+          <button class="filter-btn" data-category="lehengas" role="tab" aria-selected="false" aria-controls="productGrid">Lehengas</button>
+          <button class="filter-btn" data-category="new" role="tab" aria-selected="false" aria-controls="productGrid">New Arrivals</button>
+        </div>
+
+        <div class="swiper-container">
+          <div class="swiper-wrapper" id="productGrid" role="tabpanel" aria-live="polite">
+            <!-- Products loaded by ProductManager -->
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next" aria-label="Next slide"></div>
+          <div class="swiper-button-prev" aria-label="Previous slide"></div>
+        </div>
+
+        <div class="text-center" data-aos="fade-up">
+          <button id="loadMore" class="btn btn--outline">Load More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" data-theme="light">
+      <div class="container">
+        <h2 class="section__title text-center" data-aos="fade-up">Stories of Elegance</h2>
+        <div class="testimonial-grid" data-aos="fade-up">
+          <!-- Testimonials loaded by TestimonialManager -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="section contact-cta">
+      <div class="container grid">
+        <div data-aos="fade-right">
+          <h2 class="section__title">Need Personal Assistance?</h2>
+          <p class="contact-intro">Our textile experts are ready to help you find the perfect outfit.</p>
+          <div class="contact-methods">
+            <a href="tel:+919845677415" class="contact-link" data-aos="fade-up">
+              <span class="contact-icon">📞</span>
+              <span>+91 98456 77415</span>
+            </a>
+            <a href="https://wa.me/919845677415" class="contact-link" data-aos="fade-up" data-aos-delay="100">
+              <span class="contact-icon">💬</span>
+              <span>Chat on WhatsApp</span>
+            </a>
+            <a href="mailto:info@jeelanitextiles.com" class="contact-link" data-aos="fade-up" data-aos-delay="200">
+              <span class="contact-icon">✉️</span>
+              <span>info@jeelanitextiles.com</span>
+            </a>
+          </div>
+        </div>
+        <div class="map-container" data-aos="fade-left">
+          <iframe data-src="https://maps.google.com/maps?q=12.3197099,76.6557312&z=15&output=embed" loading="lazy" title="Jeelani Textiles Location" aria-label="Our store location in Mysuru"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer section">
+    <div class="container grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo-light.webp" alt="Jeelani Textiles" width="150" loading="lazy" />
+        <p>Celebrating tradition through handcrafted textiles since 1987.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/jeelanitextiles" aria-label="Facebook"><span>FB</span></a>
+          <a href="https://www.instagram.com/jeelanitextiles" aria-label="Instagram"><span>IG</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/pages/products.html">Shop Collection</a></li>
+          <li><a href="/pages/care-guide.html">Fabric Care</a></li>
+          <li><a href="/pages/sizing.html">Size Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <address>
+          350/24, MG Road<br>
+          Mysuru – 570004<br>
+          Karnataka, India
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jeelani Textiles. All rights reserved.</p>
+      <div class="legal-links">
+        <a href="/pages/privacy.html">Privacy Policy</a>
+        <a href="/pages/terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="floating-btn" aria-label="Back to top" data-aos="fade-up">↑</button>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919845677415" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+    <img src="assets/images/whatsapp-icon.png" alt="WhatsApp Chat" width="50" height="50" loading="lazy" />
+  </a>
+
+  <!-- Newsletter Modal -->
+  <div id="newsletterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true">
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close newsletter dialog">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h2 id="newsletter-title">Subscribe to Our Newsletter</h2>
+      <p>Get 5% off your first order!</p>
+      <form id="newsletterForm">
+        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
+        <button type="submit" class="btn btn--primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CDN Libraries (Load First) -->
+  <script src="https://cdn.jsdelivr.net/npm/zod@3.23.8/lib/index.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/zustand@4.5.2/umd/index.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/hammerjs@2.0.8/hammer.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@barba/core"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/fuse.js/dist/fuse.min.js"></script>
+
+  <!-- Main Application Entry Point (ONLY ONE MODULE SCRIPT) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

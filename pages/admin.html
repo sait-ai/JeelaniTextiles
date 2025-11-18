@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+<head>
+  <!-- Meta & SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <title>Admin Dashboard | Jeelani Textiles</title>
+  <meta name="description" content="Jeelani Textiles Admin Dashboard – Manage product listings, view inquiries, and update site content.">
+  <meta name="keywords" content="Jeelani Textiles admin dashboard, manage products">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Jeelani Textiles">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Content Security Policy (Strict) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://firestore.googleapis.com https://*.firebaseio.com https://firebasestorage.googleapis.com; frame-src 'none';">
+  
+  <link rel="canonical" href="https://jeelani-textiles.web.app/pages/admin.html">
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" crossorigin="anonymous">
+
+  <!-- Critical CSS -->
+  <style>
+    .skip-link { 
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: var(--color-neutral-100);
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
+    }
+    .skip-link:focus { top: 0; }
+    
+    .hidden { display: none !important; }
+    
+    .form-group--error .form-control,
+    .form-group--error .form-textarea,
+    .form-group--error .form-checkbox {
+      border-color: var(--color-danger-500);
+    }
+    
+    .form-group--error .form-error {
+      display: block;
+      color: var(--color-danger-500);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+    
+    .form-error { display: none; }
+    
+    .preview-thumb {
+      max-width: 150px;
+      margin-top: 0.5rem;
+      border-radius: 4px;
+    }
+    
+    /* Loading State */
+    .loading-row {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--color-background);
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .admin-form .form-group {
+        flex-direction: column;
+      }
+      
+      .admin-form .form-label {
+        margin-bottom: 0.5rem;
+      }
+      
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .table-responsive {
+        overflow-x: auto;
+      }
+      
+      .admin-table {
+        min-width: 600px;
+      }
+    }
+    
+    /* Admin-specific styles */
+    .admin-header {
+      background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+      color: white;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .admin-header h1 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: var(--color-background);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .stat-card__value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--color-primary-500);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-card__label {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+    }
+  </style>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+</head>
+
+<body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Navbar -->
+  <header class="navbar section">
+    <div class="container navbar__container flex items-center justify-between">
+      <a href="../index.html" class="navbar__logo" aria-label="Jeelani Textiles Home">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="lazy">
+      </a>
+      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="../index.html" class="navbar__link">Home</a></li>
+          <li><a href="products.html" class="navbar__link">Collection</a></li>
+          <li><a href="faq.html" class="navbar__link">FAQ</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="admin.html" class="navbar__link active" aria-current="page">Admin</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__actions flex gap-md">
+        <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <button id="themeToggle" class="icon-btn" aria-label="Switch to dark theme">
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="sun-icon hidden" aria-hidden="true">☀️</span>
+        </button>
+        <button id="logoutBtn" class="icon-btn btn btn--danger" aria-label="Logout">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 9V5l-7 7 7 7v-4h11v-6H10z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="container">
+      <h1 class="header__title">Admin Dashboard</h1>
+      <p class="header__subtitle">Manage your product catalog and view analytics</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs mb-md" aria-label="Breadcrumb" data-aos="fade-up">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li aria-current="page">Admin Dashboard</li>
+        </ol>
+      </nav>
+
+      <!-- Dashboard Stats -->
+      <div class="admin-stats" data-aos="fade-up">
+        <div class="stat-card">
+          <div class="stat-card__value" id="totalProducts">0</div>
+          <div class="stat-card__label">Total Products</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value" id="newArrivals">0</div>
+          <div class="stat-card__label">New Arrivals</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value" id="totalCategories">0</div>
+          <div class="stat-card__label">Categories</div>
+        </div>
+      </div>
+
+      <!-- Add Product Section -->
+      <section class="section admin" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="section__title">Add New Product</h2>
+        <form id="addProductForm" class="admin-form" novalidate>
+          <!-- Product Name -->
+          <div class="form-group">
+            <label for="productName" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon">
+                <path d="M3 3h18v18H3zM5 5v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h10v2H7v-2z" fill="currentColor"/>
+              </svg>
+              Product Name <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="productName" 
+              name="name" 
+              class="form-control" 
+              placeholder="Enter product name" 
+              required 
+              aria-describedby="productNameHelp" 
+              data-error="Product name is required"
+              maxlength="100"
+            >
+            <small id="productNameHelp" class="form-helper">Enter the product name (max 100 characters)</small>
+            <span class="form-error" id="productNameError"></span>
+          </div>
+
+          <!-- Price -->
+          <div class="form-group">
+            <label for="productPrice" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon">
+                <path d="M11 4h2v2h2v2h-2v2h-2V8H9V6h2V4zm-1 12h4v2h-4v-2zm-6-6h16v4H4v-4z" fill="currentColor"/>
+              </svg>
+              Price (₹) <span class="required">*</span>
+            </label>
+            <input 
+              type="number" 
+              id="productPrice" 
+              name="price" 
+              class="form-control" 
+              placeholder="Enter price" 
+              required 
+              min="0" 
+              step="0.01" 
+              aria-describedby="productPriceHelp" 
+              data-error="Price is required and must be a positive number"
+            >
+            <small id="productPriceHelp" class="form-helper">Enter the price in rupees</small>
+            <span class="form-error" id="productPriceError"></span>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label for="productCategory" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" fill="currentColor"/>
+              </svg>
+              Category <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="productCategory" 
+              name="category" 
+              class="form-control" 
+              list="categoryList" 
+              placeholder="Select or type a category" 
+              required 
+              aria-describedby="productCategoryHelp" 
+              data-error="Please select a category"
+            >
+            <datalist id="categoryList">
+              <option value="Sarees">
+              <option value="Kurtis">
+              <option value="Lehengas">
+              <option value="Cotton">
+              <option value="Silk">
+              <option value="Karandi">
+            </datalist>
+            <small id="productCategoryHelp" class="form-helper">Select from list or type new category</small>
+            <span class="form-error" id="productCategoryError"></span>
+          </div>
+
+          <!-- Description -->
+          <div class="form-group">
+            <label for="productDesc" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon">
+                <path d="M3 3h18v18H3zM5 5v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" fill="currentColor"/>
+              </svg>
+              Description
+            </label>
+            <textarea 
+              id="productDesc" 
+              name="description" 
+              class="form-textarea" 
+              placeholder="Enter product description" 
+              rows="4" 
+              aria-describedby="productDescHelp"
+              maxlength="500"
+            ></textarea>
+            <small id="productDescHelp" class="form-helper">Optional: Detailed product description (max 500 characters)</small>
+          </div>
+
+          <!-- Image Upload -->
+          <div class="form-group">
+            <label for="productImage" class="form-label">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon">
+                <path d="M4 4h16v12H4zM6 6v8h12V6H6zm2 2h8v4H8V8zm-2 8h12v2H6v-2zm8-6h2v2h-2v-2z" fill="currentColor"/>
+              </svg>
+              Product Image <span class="required">*</span>
+            </label>
+            <input 
+              type="file" 
+              id="productImage" 
+              name="image" 
+              class="form-control" 
+              accept="image/jpeg,image/png,image/webp" 
+              required 
+              data-error="Please upload a product image (JPEG, PNG, WebP, max 5MB)"
+            >
+            <small id="productImageHelp" class="form-helper">Upload image (JPEG, PNG, or WebP, max 5MB)</small>
+            <span class="form-error" id="productImageError"></span>
+            <div id="imagePreview" class="image-preview"></div>
+          </div>
+
+          <!-- New Arrival Checkbox -->
+          <div class="form-group">
+            <label for="productNew" class="form-label checkbox-label">
+              <input type="checkbox" id="productNew" name="isNew" class="form-checkbox">
+              Mark as New Arrival
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn--primary submit-btn" aria-label="Add product">
+            <span class="btn-text">Add Product</span>
+            <span class="btn-loader hidden" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 0 0-18zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" opacity="0.2"/>
+                <path d="M12 3a9 9 0 0 1 9 9"/>
+              </svg>
+            </span>
+          </button>
+          
+          <p id="formMsg" class="form-msg mt-md" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Product List Section -->
+      <section class="section" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="section__title">Product List</h2>
+        <div class="table-responsive">
+          <table class="admin-table" role="grid" aria-label="Product list">
+            <thead>
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody">
+              <tr class="loading-row">
+                <td colspan="6" class="text-center">Loading products...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer section">
+    <div class="container footer__container">
+      <div class="footer__grid grid">
+        <div class="footer__col">
+          <h3>Jeelani Textiles</h3>
+          <p>Preserving tradition through handcrafted ethnic wear since 1987.</p>
+          <div class="footer__social flex gap-md">
+            <a href="https://facebook.com/jeelanitextiles" aria-label="Facebook" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/jeelanitextiles" aria-label="Instagram" class="footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.16c3.2 0 3.58 0 4.85.07a6.3 6.3 0 0 1 2.12.4 3.92 3.92 0 0 1 1.47.94 3.92 3.92 0 0 1 .94 1.47c.23.8.35 1.24.4 2.12.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85a6.3 6.3 0 0 1-.4 2.12 3.92 3.92 0 0 1-.94 1.47 3.92 3.92 0 0 1-1.47.94c-.8.23-1.24.35-2.12.4-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07a6.3 6.3 0 0 1-2.12-.4 3.92 3.92 0 0 1-1.47-.94 3.92 3.92 0 0 1-.94-1.47 6.3 6.3 0 0 1-.4-2.12c-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85a6.3 6.3 0 0 1 .4-2.12 3.92 3.92 0 0 1 .94-1.47 3.92 3.92 0 0 1 1.47-.94c.8-.23 1.24-.35 2.12-.4 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.27 0-3.68.01-4.96.07-1.3.06-2.19.28-2.97.6A6.08 6.08 0 0 0 2.83 4.1a6.08 6.08 0 0 0-1.27 2.24c-.32.78-.54 1.67-.6 2.97C.01 10.32 0 10.73 0 14s.01 3.68.07 4.96c.06 1.3.28 2.19.6 2.97a6.08 6.08 0 0 0 1.27 2.24 6.08 6.08 0 0 0 2.24 1.27c.78.32 1.67.54 2.97.6 1.28.06 1.69.07 4.96.07s3.68-.01 4.96-.07c1.3-.06 2.19-.28 2.97-.6a6.08 6.08 0 0 0 2.24-1.27 6.08 6.08 0 0 0 1.27-2.24c.32-.78.54-1.67.6-2.97.06-1.28.07-1.69.07-4.96s-.01-3.68-.07-4.96c-.06-1.3-.28-2.19-.6-2.97a6.08 6.08 0 0 0-1.27-2.24 6.08 6.08 0 0 0-2.24-1.27c-.78-.32-1.67-.54-2.97-.6C15.68.01 15.27 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.23a4.03 4.03 0 1 1 0-8.06 4.03 4.03 0 0 1 0 8.06zm6.44-10.3a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="about.html" class="footer__link">Our Story</a></li>
+            <li><a href="craftsmanship.html" class="footer__link">Craftsmanship</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Customer Care</h4>
+          <ul class="footer__links">
+            <li><a href="faq.html" class="footer__link">FAQs</a></li>
+            <li><a href="shipping.html" class="footer__link">Shipping</a></li>
+            <li><a href="returns.html" class="footer__link">Returns</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Jeelani Textiles. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="floating-btn" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="modal-content">
+      <h2 id="deleteModalTitle">Confirm Deletion</h2>
+      <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="confirmDelete" class="btn btn--danger">Delete</button>
+        <button id="cancelDelete" class="btn btn--secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Main Application Entry Point -->
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

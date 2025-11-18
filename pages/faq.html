@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+<head>
+  <!-- Meta & SEO Optimization -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <title>Frequently Asked Questions | Jeelani Textiles - Help & Support</title>
+  <meta name="description" content="Find answers to frequently asked questions about Jeelani Textiles' premium ethnic wear, shipping, returns, care instructions, and customization options.">
+  <meta name="keywords" content="Jeelani Textiles FAQs, ethnic wear questions, shipping policy, returns, care instructions, Indian fashion support">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Jeelani Textiles">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Enhanced Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com 'unsafe-inline'; 
+    style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; 
+    font-src 'self' https://fonts.gstatic.com; 
+    img-src 'self' data: https: blob:; 
+    connect-src 'self' https://firestore.googleapis.com https://firebasestorage.googleapis.com https://*.firebaseio.com;
+  ">
+  
+  <link rel="canonical" href="https://jeelani-textiles.web.app/pages/faq.html">
+
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="FAQs | Jeelani Textiles">
+  <meta property="og:description" content="Answers to your questions about Jeelani Textiles' handcrafted ethnic wear, shipping, returns, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jeelani-textiles.web.app/pages/faq.html">
+  <meta property="og:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jeelani Textiles FAQ page">
+  <meta property="og:site_name" content="Jeelani Textiles">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@jeelanitextiles">
+  <meta name="twitter:title" content="FAQs - Jeelani Textiles">
+  <meta name="twitter:description" content="Get answers to all your questions about our ethnic wear">
+  <meta name="twitter:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" crossorigin="anonymous">
+  <link rel="preload" href="../assets/images/logo.webp" as="image">
+
+  <!-- Critical Inline CSS -->
+  <style>
+    /* CSS Variables */
+    :root {
+      --color-background: #ffffff;
+      --color-surface: #f8f9fa;
+      --color-text: #333333;
+      --color-text-secondary: #6c757d;
+      --color-primary-500: #f39c12;
+      --color-primary-600: #e08e0b;
+      --color-primary-100: #fef5e7;
+      --color-success: #27ae60;
+      --color-error: #e74c3c;
+      --color-neutral-100: #ffffff;
+      --color-border: #dee2e6;
+      --z-index-max: 9999;
+      --z-index-sticky: 100;
+      --transition-base: 0.3s ease;
+      --space-lg: 2rem;
+      --border-radius: 8px;
+      --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --color-background: #1a1a1a;
+      --color-surface: #2d2d2d;
+      --color-text: #f8f8f8;
+      --color-text-secondary: #b0b0b0;
+      --color-primary-100: #3d3020;
+      --color-border: #404040;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      transition: background-color var(--transition-base), color var(--transition-base);
+      line-height: 1.6;
+    }
+
+    /* Accessibility */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: var(--color-neutral-100);
+      padding: 8px 16px;
+      z-index: calc(var(--z-index-max) + 1);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0 0 4px 0;
+      transition: top var(--transition-base);
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--color-background);
+      z-index: var(--z-index-max);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-spinner {
+      border: 3px solid rgba(243, 156, 18, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid var(--color-primary-500);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* FAQ Item Styles */
+    .faq-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      transition: all var(--transition-base);
+    }
+
+    .faq-item[open] {
+      box-shadow: var(--box-shadow);
+    }
+
+    .faq-item[open] .faq-question {
+      background: var(--color-primary-100);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-question {
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color var(--transition-base);
+      list-style: none;
+    }
+
+    .faq-question::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 300;
+      transition: transform var(--transition-base);
+    }
+
+    .faq-item[open] .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-question:hover {
+      background: var(--color-primary-100);
+    }
+
+    .faq-question:focus {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: -2px;
+    }
+
+    .faq-answer {
+      padding: 1.5rem;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sticky FAQ Controls */
+    .faq-toggle {
+      position: sticky;
+      top: 80px;
+      background: var(--color-background);
+      padding: 1rem;
+      z-index: var(--z-index-sticky);
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: var(--border-radius);
+      margin-bottom: 1.5rem;
+    }
+
+    /* FAQ Category Headers */
+    .faq-category h2 {
+      scroll-margin-top: 120px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-category-icon {
+      color: var(--color-primary-500);
+      flex-shrink: 0;
+    }
+
+    /* Search Highlight */
+    mark {
+      background-color: var(--color-primary-100);
+      padding: 0.1em 0.3em;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    /* Voting Buttons */
+    .faq-voting {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .vote-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all var(--transition-base);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .vote-btn:hover {
+      background: var(--color-primary-100);
+      border-color: var(--color-primary-500);
+    }
+
+    .vote-btn.voted {
+      background: var(--color-primary-500);
+      color: white;
+      border-color: var(--color-primary-500);
+    }
+
+    .vote-count {
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    /* Loading States */
+    .skeleton-faq {
+      background: linear-gradient(
+        90deg,
+        #e0e0e0 25%,
+        #f0f0f0 50%,
+        #e0e0e0 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite ease-in-out;
+      border-radius: var(--border-radius);
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--color-text-secondary);
+    }
+
+    .empty-state svg {
+      margin: 0 auto 1.5rem;
+      color: var(--color-primary-500);
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .faq-toggle {
+        top: 60px;
+        flex-direction: column;
+      }
+
+      .faq-container {
+        scroll-snap-type: y proximity;
+      }
+
+      .faq-category {
+        scroll-snap-align: start;
+      }
+
+      .faq-question {
+        padding: 0.875rem 1rem;
+        font-size: 0.938rem;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus Visible */
+    :focus-visible {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Hidden State */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+
+  <!-- Fonts & Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jeelani Textiles">
+
+  <!-- Schema.org FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "Frequently Asked Questions - Jeelani Textiles",
+    "description": "Answers to frequently asked questions about Jeelani Textiles' ethnic wear, shipping, returns, and care instructions",
+    "url": "https://jeelani-textiles.web.app/pages/faq.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jeelani-textiles.web.app"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://jeelani-textiles.web.app/pages/faq.html"
+        }
+      ]
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of ethnic wear do you offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a wide range of handcrafted ethnic wear, including sarees, kurtis, lehengas, and more. Each piece blends traditional artistry with modern aesthetics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does delivery take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delivery within India takes 5-7 business days, while international orders take 10-15 business days, depending on customs. Processing takes 2-3 business days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is your return policy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept returns within 15 days of delivery if the item is unused and in original packaging."
+        }
+      }
+    ],
+    "about": {
+      "@type": "Organization",
+      "name": "Jeelani Textiles",
+      "url": "https://jeelani-textiles.web.app",
+      "logo": "https://jeelani-textiles.web.app/assets/images/logo.webp"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ============================================
+       LOADER
+       Managed by: js/init.js
+       ============================================ -->
+  <div id="loader" class="loader" role="status" aria-label="Loading FAQs">
+    <div class="loader-spinner" aria-hidden="true"></div>
+    <span class="visually-hidden">Loading frequently asked questions, please wait...</span>
+  </div>
+
+  <!-- ============================================
+       SKIP NAVIGATION (Accessibility)
+       ============================================ -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       NAVBAR
+       Managed by: js/app.js (navigation, theme, cart)
+       ============================================ -->
+  <header class="navbar section">
+    <div class="container navbar__container flex items-center justify-between">
+      <a href="../index.html" class="navbar__logo" aria-label="Jeelani Textiles Home">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="eager">
+      </a>
+      
+      <!-- Main Navigation -->
+      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="../index.html" class="navbar__link">Home</a></li>
+          <li><a href="products.html" class="navbar__link">Collection</a></li>
+          <li><a href="faq.html" class="navbar__link active" aria-current="page">FAQ</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="admin-login.html" class="navbar__link">Admin</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Navbar Actions -->
+      <div class="navbar__actions flex gap-md">
+        <!-- Mobile Menu Toggle -->
+        <button 
+          id="navToggle" 
+          class="icon-btn" 
+          aria-label="Toggle menu" 
+          aria-expanded="false" 
+          aria-controls="mainNav"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+        
+        <!-- Theme Toggle -->
+        <button 
+          id="themeToggle" 
+          class="icon-btn" 
+          aria-label="Toggle dark mode" 
+          aria-pressed="false"
+        >
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="sun-icon hidden" aria-hidden="true">☀️</span>
+        </button>
+        
+        <!-- Cart Button -->
+        <button id="checkoutCart" class="icon-btn" aria-label="Shopping cart, 0 items">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+          <span id="cartCount" class="badge" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main id="main-content" role="main">
+    <div class="container">
+      
+      <!-- Breadcrumbs (Enhanced SEO) -->
+      <nav class="breadcrumbs mb-md" aria-label="Breadcrumb" data-aos="fade-up">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="../index.html">
+              <span itemprop="name">Home</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name" aria-current="page">FAQ</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="page-header" data-aos="fade-up">
+        <h1 class="section__title">Frequently Asked Questions</h1>
+        <p class="section__subtitle">Everything you need to know about Jeelani Textiles</p>
+      </div>
+
+      <!-- ============================================
+           FAQ SEARCH
+           Managed by: js/managers/faq.js
+           Features: Debounced search, highlighting
+           ============================================ -->
+      <div class="faq-search mb-lg" data-aos="fade-up" data-aos-delay="100">
+        <label for="faqSearch" class="visually-hidden">Search frequently asked questions</label>
+        <div class="search-wrapper">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="search-icon" focusable="false">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+          </svg>
+          <input 
+            type="search" 
+            id="faqSearch" 
+            class="form-control" 
+            placeholder="Search for a question..." 
+            aria-controls="faqList" 
+            aria-describedby="searchResults"
+            autocomplete="off"
+          >
+          <button 
+            id="faqSearchClear" 
+            class="icon-btn" 
+            aria-label="Clear search" 
+            style="display: none;"
+            tabindex="-1"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </button>
+        </div>
+        <span id="searchResults" class="visually-hidden" role="status" aria-live="polite"></span>
+      </div>
+
+      <!-- ============================================
+           FAQ TOGGLE CONTROLS
+           Managed by: js/managers/faq.js
+           ============================================ -->
+      <div class="faq-toggle" data-aos="fade-up" data-aos-delay="200" role="toolbar" aria-label="FAQ controls">
+        <button 
+          id="expandAll" 
+          class="btn btn--outline" 
+          aria-label="Expand all questions"
+          type="button"
+        >
+          Expand All
+        </button>
+        <button 
+          id="collapseAll" 
+          class="btn btn--outline" 
+          aria-label="Collapse all questions"
+          type="button"
+        >
+          Collapse All
+        </button>
+      </div>
+
+      <!-- ============================================
+           FAQ LIST
+           Populated by: js/managers/faq.js
+           Loads from: Firestore /faqs collection
+           Features: Accordion, voting, search
+           ============================================ -->
+      <div class="faq-container">
+        <section id="faqList" class="section faq-list" aria-live="polite" aria-busy="false">
+          <!-- FAQs loaded dynamically by FAQManager.renderFAQs() -->
+          <!-- Structure for each FAQ:
+               <div class="faq-category" data-category="general">
+                 <h2>Category Name</h2>
+                 <details class="faq-item" data-faq-id="id">
+                   <summary class="faq-question">Question?</summary>
+                   <div class="faq-answer">
+                     <p>Answer</p>
+                     <div class="faq-voting">
+                       <span>Was this helpful?</span>
+                       <button class="vote-btn" data-vote="up">👍 Helpful</button>
+                       <button class="vote-btn" data-vote="down">👎 Not Helpful</button>
+                       <span class="vote-count">+5</span>
+                     </div>
+                   </div>
+                 </details>
+               </div>
+          -->
+        </section>
+
+        <!-- ============================================
+             LOADING STATE
+             Shown by: js/managers/faq.js while fetching
+             ============================================ -->
+        <div id="loadingState" role="status" aria-live="polite">
+          <div class="skeleton-faq"></div>
+          <div class="skeleton-faq"></div>
+          <div class="skeleton-faq"></div>
+          <div class="skeleton-faq"></div>
+          <div class="skeleton-faq"></div>
+          <span class="visually-hidden">Loading FAQs...</span>
+        </div>
+
+        <!-- ============================================
+             EMPTY STATE
+             Shown by: js/managers/faq.js when no FAQs
+             ============================================ -->
+        <div id="emptyState" class="empty-state" hidden role="status" aria-live="polite">
+          <svg width="64" height="64" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" fill="currentColor"/>
+          </svg>
+          <h2>No FAQs Available</h2>
+          <p>We're updating our FAQ section. Please check back soon or contact us directly.</p>
+          <a href="contact.html" class="btn btn--outline">Contact Us</a>
+        </div>
+
+        <!-- ============================================
+             NO RESULTS STATE
+             Shown by: js/managers/faq.js on empty search
+             ============================================ -->
+        <div id="noResultsState" class="empty-state" hidden role="status" aria-live="polite">
+          <svg width="64" height="64" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+          </svg>
+          <h2>No Questions Found</h2>
+          <p id="noResultsMessage">Try different search terms or browse all categories.</p>
+          <button id="clearSearch" class="btn btn--outline">Clear Search</button>
+        </div>
+      </div>
+
+      <!-- ============================================
+           CONTACT PROMPT
+           ============================================ -->
+      <section class="section text-center" data-aos="fade-up" data-aos-delay="300">
+        <h2 class="section__title">Still Have Questions?</h2>
+        <p class="section__subtitle">We're here to help! Reach out to us for personalized assistance.</p>
+        <div class="flex gap-md justify-center" style="margin-top: 1.5rem;">
+          <a href="contact.html" class="btn btn--primary" aria-label="Go to contact page">
+            Contact Us
+          </a>
+          <a 
+            href="https://wa.me/919845677415?text=Hi!%20I%20have%20an%20FAQ-related%20question." 
+            class="btn btn--outline" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Message us on WhatsApp"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="margin-right: 8px;" focusable="false">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z" fill="currentColor"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer section">
+    <div class="container footer__container">
+      <div class="footer__grid grid">
+        <!-- Brand Column -->
+        <div class="footer__col">
+          <h3>Jeelani Textiles</h3>
+          <p>Preserving tradition through handcrafted ethnic wear since 1987.</p>
+          <div class="footer__social flex gap-md">
+            <a href="https://facebook.com/jeelanitextiles" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">FB</a>
+            <a href="https://instagram.com/jeelanitextiles" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+            <a href="https://wa.me/919845677415" aria-label="Contact us on WhatsApp" target="_blank" rel="noopener noreferrer">WA</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="products.html">Collection</a></li>
+            <li><a href="faq.html" aria-current="page">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div class="footer__col">
+          <h4>Customer Care</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer__col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for exclusive offers</p>
+          <form id="newsletterForm" class="newsletter__form" novalidate>
+            <label for="newsletterEmail" class="visually-hidden">Email address for newsletter</label>
+            <input 
+              type="email" 
+              id="newsletterEmail" 
+              name="email"
+              class="form-control" 
+              placeholder="Your email" 
+              required 
+              autocomplete="email"
+              aria-label="Email address"
+            >
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <p>© 2025 Jeelani Textiles. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       FLOATING ACTION BUTTONS
+       ============================================ -->
+  <button 
+    id="backToTop" 
+    class="floating-btn" 
+    aria-label="Scroll back to top" 
+    style="display: none;"
+    type="button"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <div id="whatsappBubble" class="floating-btn whatsapp">
+    <a 
+      href="https://wa.me/919845677415?text=Hi!%20I%20have%20a%20query%20about%20your%20products." 
+      aria-label="Message us on WhatsApp" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src="../assets/images/whatsapp-icon.png" 
+        alt="" 
+        width="40" 
+        height="40" 
+        loading="lazy"
+        aria-hidden="true"
+      >
+      <span class="visually-hidden">WhatsApp us</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       CDN LIBRARIES
+       ============================================ -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" defer></script>
+
+  <!-- ============================================
+       MAIN APPLICATION ENTRY POINT
+       All FAQ logic handled by FAQManager
+       ============================================ -->
+  <script type="module" src="../js/app.js"></script>
+
+  <!-- ============================================
+       CLOUDFLARE BOT PROTECTION
+       Keep as-is (required for security)
+       ============================================ -->
+  <script defer>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'938269d24894ad83',t:'MTc0NTk2NzYwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

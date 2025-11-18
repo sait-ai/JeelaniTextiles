@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+<head>
+  <!-- Meta & SEO Optimization -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <title>Contact Us | Jeelani Textiles - Get in Touch</title>
+  <meta name="description" content="Get in touch with Jeelani Textiles for inquiries about our handcrafted ethnic wear. Reach us via phone, email, WhatsApp, or our contact form. We respond within 24 hours.">
+  <meta name="keywords" content="Jeelani Textiles contact, ethnic wear support, customer service, Bangalore textiles">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Jeelani Textiles">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Enhanced Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com 'unsafe-inline'; 
+    style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; 
+    font-src 'self' https://fonts.gstatic.com; 
+    img-src 'self' data: https: blob:; 
+    connect-src 'self' https://firestore.googleapis.com https://firebasestorage.googleapis.com https://*.firebaseio.com https://us-central1-jeelani-textiles.cloudfunctions.net; 
+    frame-src 'self' https://www.google.com;
+  ">
+  
+  <link rel="canonical" href="https://jeelani-textiles.web.app/pages/contact.html">
+
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="Contact Us | Jeelani Textiles">
+  <meta property="og:description" content="Reach out to Jeelani Textiles for inquiries about our handcrafted ethnic wear. We respond within 24 hours.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jeelani-textiles.web.app/pages/contact.html">
+  <meta property="og:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jeelani Textiles contact page">
+  <meta property="og:site_name" content="Jeelani Textiles">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@jeelanitextiles">
+  <meta name="twitter:title" content="Contact Jeelani Textiles">
+  <meta name="twitter:description" content="Get in touch for handcrafted ethnic wear inquiries">
+  <meta name="twitter:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.google.com">
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" crossorigin="anonymous">
+  <link rel="preload" href="../assets/images/logo.webp" as="image">
+
+  <!-- Critical Inline CSS -->
+  <style>
+    /* CSS Variables */
+    :root {
+      --color-background: #ffffff;
+      --color-surface: #f8f9fa;
+      --color-text: #333333;
+      --color-text-secondary: #6c757d;
+      --color-primary-500: #f39c12;
+      --color-primary-600: #e08e0b;
+      --color-success: #27ae60;
+      --color-error: #e74c3c;
+      --color-neutral-100: #ffffff;
+      --color-border: #dee2e6;
+      --z-index-max: 9999;
+      --z-index-loader: 9998;
+      --transition-base: 0.3s ease;
+      --space-lg: 2rem;
+      --border-radius: 8px;
+      --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --color-background: #1a1a1a;
+      --color-surface: #2d2d2d;
+      --color-text: #f8f8f8;
+      --color-text-secondary: #b0b0b0;
+      --color-border: #404040;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      transition: background-color var(--transition-base), color var(--transition-base);
+      line-height: 1.6;
+    }
+
+    /* Accessibility */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: var(--color-neutral-100);
+      padding: 8px 16px;
+      z-index: calc(var(--z-index-max) + 1);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0 0 4px 0;
+      transition: top var(--transition-base);
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--color-background);
+      z-index: var(--z-index-loader);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-spinner {
+      border: 3px solid rgba(243, 156, 18, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid var(--color-primary-500);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Contact Grid */
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    @media (max-width: 768px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Form Styles */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .form-control,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .form-control:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--color-primary-500);
+      box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+    }
+
+    /* Validation States */
+    .form-control.is-valid,
+    .form-textarea.is-valid {
+      border-color: var(--color-success);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2327ae60'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.25rem;
+      padding-right: 2.5rem;
+    }
+
+    .form-control.is-error,
+    .form-textarea.is-error {
+      border-color: var(--color-error);
+      background-color: rgba(231, 76, 60, 0.05);
+    }
+
+    .form-helper {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.25rem;
+      min-height: 1.25rem;
+    }
+
+    .form-helper.error {
+      color: var(--color-error);
+      font-weight: 500;
+    }
+
+    /* Required Field Indicator */
+    .required {
+      color: var(--color-error);
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* Form Messages */
+    .form-msg {
+      padding: 12px 16px;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .form-msg.success {
+      display: block;
+      background-color: rgba(39, 174, 96, 0.1);
+      color: var(--color-success);
+      border: 1px solid var(--color-success);
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .form-msg.error {
+      display: block;
+      background-color: rgba(231, 76, 60, 0.1);
+      color: var(--color-error);
+      border: 1px solid var(--color-error);
+      animation: shake 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    /* Button Loader */
+    .btn-loader {
+      display: inline-block;
+      margin-left: 8px;
+      animation: spin 1s linear infinite;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Contact Info Styles */
+    .contact__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact__icon {
+      flex-shrink: 0;
+      color: var(--color-primary-500);
+      margin-top: 0.25rem;
+    }
+
+    /* Map Wrapper */
+    .map-wrapper {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      margin-top: 2rem;
+    }
+
+    .map-wrapper iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus Visible */
+    :focus-visible {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+
+  <!-- Fonts & Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jeelani Textiles">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Jeelani Textiles",
+    "description": "Get in touch with Jeelani Textiles for inquiries about handcrafted ethnic wear",
+    "url": "https://jeelani-textiles.web.app/pages/contact.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jeelani-textiles.web.app"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://jeelani-textiles.web.app/pages/contact.html"
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Jeelani Textiles",
+      "image": "https://jeelani-textiles.web.app/assets/images/logo.webp",
+      "telephone": "+919845677415",
+      "email": "info@jeelanitextiles.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Textile Lane",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "12.971598990856",
+        "longitude": "77.594562314822"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://facebook.com/jeelanitextiles",
+        "https://instagram.com/jeelanitextiles"
+      ]
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ============================================
+       LOADER
+       Managed by: js/init.js
+       ============================================ -->
+  <div id="loader" class="loader" role="status" aria-label="Loading contact page">
+    <div class="loader-spinner" aria-hidden="true"></div>
+    <span class="visually-hidden">Loading, please wait...</span>
+  </div>
+
+  <!-- ============================================
+       SKIP NAVIGATION (Accessibility)
+       ============================================ -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       NAVBAR
+       Managed by: js/app.js (navigation, theme, cart)
+       ============================================ -->
+  <header class="navbar section">
+    <div class="container navbar__container flex items-center justify-between">
+      <a href="../index.html" class="navbar__logo" aria-label="Jeelani Textiles Home">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="eager">
+      </a>
+      
+      <!-- Main Navigation -->
+      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="../index.html" class="navbar__link">Home</a></li>
+          <li><a href="products.html" class="navbar__link">Collection</a></li>
+          <li><a href="faq.html" class="navbar__link">FAQ</a></li>
+          <li><a href="contact.html" class="navbar__link active" aria-current="page">Contact</a></li>
+          <li><a href="admin-login.html" class="navbar__link">Admin</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Navbar Actions -->
+      <div class="navbar__actions flex gap-md">
+        <!-- Mobile Menu Toggle -->
+        <button 
+          id="navToggle" 
+          class="icon-btn" 
+          aria-label="Toggle menu" 
+          aria-expanded="false" 
+          aria-controls="mainNav"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+        
+        <!-- Theme Toggle -->
+        <button 
+          id="themeToggle" 
+          class="icon-btn" 
+          aria-label="Toggle dark mode" 
+          aria-pressed="false"
+        >
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="sun-icon hidden" aria-hidden="true">☀️</span>
+        </button>
+        
+        <!-- Cart Button -->
+        <button id="checkoutCart" class="icon-btn" aria-label="Shopping cart, 0 items">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+          <span id="cartCount" class="badge" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main id="main-content" role="main">
+    <div class="container">
+      
+      <!-- Breadcrumbs (Enhanced SEO) -->
+      <nav class="breadcrumbs mb-md" aria-label="Breadcrumb" data-aos="fade-up">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="../index.html">
+              <span itemprop="name">Home</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name" aria-current="page">Contact</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="page-header" data-aos="fade-up">
+        <h1 class="section__title">Contact Us</h1>
+        <p class="section__subtitle">We'd love to hear from you. We respond within 24 hours.</p>
+      </div>
+
+      <!-- ============================================
+           CONTACT SECTION
+           Form managed by: js/managers/contact.js
+           Features: Validation, CSRF, WhatsApp, Cloud Function
+           ============================================ -->
+      <section class="section contact__grid" data-aos="fade-up" data-aos-delay="100">
+        
+        <!-- Contact Information -->
+        <div class="contact__info">
+          <h2 class="section__title">Get in Touch</h2>
+          <p>Have a question or need assistance? We're here to help!</p>
+          
+          <ul class="contact__list" role="list">
+            <!-- Email -->
+            <li class="contact__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" class="contact__icon" focusable="false">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+              </svg>
+              <div>
+                <strong>Email:</strong><br>
+                <a href="mailto:info@jeelanitextiles.com">info@jeelanitextiles.com</a>
+              </div>
+            </li>
+            
+            <!-- Phone -->
+            <li class="contact__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" class="contact__icon" focusable="false">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" fill="currentColor"/>
+              </svg>
+              <div>
+                <strong>Phone:</strong><br>
+                <a href="tel:+919845677415">+91 98456 77415</a>
+              </div>
+            </li>
+            
+            <!-- Address -->
+            <li class="contact__item">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" class="contact__icon" focusable="false">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z" fill="currentColor"/>
+              </svg>
+              <div>
+                <strong>Address:</strong><br>
+                <address style="font-style: normal;">
+                  123 Textile Lane<br>
+                  Bangalore, Karnataka<br>
+                  India
+                </address>
+              </div>
+            </li>
+          </ul>
+          
+          <!-- WhatsApp CTA -->
+          <div class="contact__social mt-lg">
+            <a 
+              href="https://wa.me/919845677415?text=Hi!%20I%20have%20a%20query%20about%20your%20products." 
+              class="btn btn--outline" 
+              aria-label="Message us on WhatsApp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="margin-right: 8px;" focusable="false">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z" fill="currentColor"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+        
+        <!-- ============================================
+             CONTACT FORM
+             All validation/submission handled by ContactManager
+             ============================================ -->
+        <div class="contact__form">
+          <h2 class="section__title">Send Us a Message</h2>
+          
+          <form id="contactForm" novalidate aria-labelledby="form-heading">
+            <h3 id="form-heading" class="visually-hidden">Contact form</h3>
+            
+            <!-- Name Field -->
+            <div class="form-group">
+              <label for="contactName" class="form-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+                </svg>
+                Name <span class="required" aria-label="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="contactName" 
+                name="name"
+                class="form-control" 
+                placeholder="Your full name" 
+                required 
+                aria-required="true" 
+                aria-describedby="contactNameHelp"
+                autocomplete="name"
+                maxlength="100"
+              >
+              <small id="contactNameHelp" class="form-helper" role="alert" aria-live="polite"></small>
+            </div>
+            
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                </svg>
+                Email <span class="required" aria-label="required">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="contactEmail" 
+                name="email"
+                class="form-control" 
+                placeholder="your.email@example.com" 
+                required 
+                aria-required="true" 
+                aria-describedby="contactEmailHelp"
+                autocomplete="email"
+                maxlength="100"
+              >
+              <small id="contactEmailHelp" class="form-helper" role="alert" aria-live="polite"></small>
+            </div>
+            
+            <!-- Phone Field (Optional) -->
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.12.35.03.74-.24 1.02l-2.2 2.2z" fill="currentColor"/>
+                </svg>
+                Phone
+              </label>
+              <input 
+                type="tel" 
+                id="contactPhone" 
+                name="phone"
+                class="form-control" 
+                placeholder="+91 98456 77415" 
+                aria-describedby="contactPhoneHelp"
+                autocomplete="tel"
+                pattern="[0-9+\-\s()]{8,20}"
+                title="Please enter a valid phone number"
+                maxlength="20"
+              >
+              <small id="contactPhoneHelp" class="form-helper" role="alert" aria-live="polite"></small>
+            </div>
+            
+            <!-- Message Field -->
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" class="form-icon" focusable="false">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z" fill="currentColor"/>
+                </svg>
+                Message <span class="required" aria-label="required">*</span>
+              </label>
+              <textarea 
+                id="contactMessage" 
+                name="message"
+                class="form-textarea" 
+                placeholder="Tell us how we can help you..." 
+                rows="5" 
+                required 
+                aria-required="true" 
+                aria-describedby="contactMessageHelp"
+                maxlength="1000"
+              ></textarea>
+              <small id="contactMessageHelp" class="form-helper" role="alert" aria-live="polite"></small>
+            </div>
+            
+            <!-- Honeypot (Spam Prevention) -->
+            <input 
+              type="text" 
+              id="honeypot" 
+              name="honeypot" 
+              style="position: absolute; left: -9999px;" 
+              tabindex="-1" 
+              autocomplete="off"
+              aria-hidden="true"
+            >
+            
+            <!-- CSRF Token (Will be injected by ContactManager) -->
+            <input type="hidden" id="csrfToken" name="csrfToken" value="">
+            
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              class="btn btn--primary submit-btn" 
+              aria-label="Send your message"
+            >
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loader hidden" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 0 0-18zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" opacity="0.25"/>
+                  <path d="M12 3a9 9 0 0 1 9 9"/>
+                </svg>
+              </span>
+            </button>
+            
+            <!-- Form Message -->
+            <div id="formMsg" class="form-msg" role="alert" aria-live="polite" aria-atomic="true"></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================================
+           MAP SECTION
+           ============================================ -->
+      <section class="section" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="section__title text-center">Visit Our Store</h2>
+        <p class="text-center text-secondary mb-lg">Find us in the heart of Bangalore's textile district</p>
+        
+        <div class="map-wrapper">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d77.594562314822!3d12.971598990856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE4LjgiTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Jeelani Textiles location in Bangalore, Karnataka" 
+            aria-label="Interactive map of Jeelani Textiles store location"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer section">
+    <div class="container footer__container">
+      <div class="footer__grid grid">
+        <!-- Brand Column -->
+        <div class="footer__col">
+          <h3>Jeelani Textiles</h3>
+          <p>Preserving tradition through handcrafted ethnic wear since 1987.</p>
+          <div class="footer__social flex gap-md">
+            <a href="https://facebook.com/jeelanitextiles" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">FB</a>
+            <a href="https://instagram.com/jeelanitextiles" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+            <a href="https://wa.me/919845677415" aria-label="Contact us on WhatsApp" target="_blank" rel="noopener noreferrer">WA</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="products.html">Collection</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div class="footer__col">
+          <h4>Customer Care</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer__col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for exclusive offers</p>
+          <form id="newsletterForm" class="newsletter__form" novalidate>
+            <label for="newsletterEmail" class="visually-hidden">Email address for newsletter</label>
+            <input 
+              type="email" 
+              id="newsletterEmail" 
+              name="email"
+              class="form-control" 
+              placeholder="Your email" 
+              required 
+              autocomplete="email"
+              aria-label="Email address"
+            >
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <p>© 2025 Jeelani Textiles. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       FLOATING ACTION BUTTONS
+       ============================================ -->
+  <button 
+    id="backToTop" 
+    class="floating-btn" 
+    aria-label="Scroll back to top" 
+    style="display: none;"
+    type="button"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <div id="whatsappBubble" class="floating-btn whatsapp">
+    <a 
+      href="https://wa.me/919845677415?text=Hi!%20I%20have%20a%20query%20about%20your%20products." 
+      aria-label="Message us on WhatsApp" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src="../assets/images/whatsapp-icon.png" 
+        alt="" 
+        width="40" 
+        height="40" 
+        loading="lazy"
+        aria-hidden="true"
+      >
+      <span class="visually-hidden">WhatsApp us</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       CDN LIBRARIES
+       ============================================ -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" defer></script>
+
+  <!-- ============================================
+       MAIN APPLICATION ENTRY POINT
+       All form logic handled by ContactManager
+       ============================================ -->
+  <script type="module" src="../js/app.js"></script>
+
+  <!-- ============================================
+       CLOUDFLARE BOT PROTECTION
+       Keep as-is (required for security)
+       ============================================ -->
+  <script defer>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92b75d357c1fbd58',t:'MTc0MzgzODQ3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

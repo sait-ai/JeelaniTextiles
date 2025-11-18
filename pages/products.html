@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Meta & SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <title>Premium Ethnic Wear Collection | Jeelani Textiles</title>
+  <meta name="description" content="Discover handcrafted sarees, kurtis & lehengas. Authentic Indian textiles with modern designs. Free shipping on orders over ₹2999.">
+  <meta name="keywords" content="handloom sarees, designer kurtis, bridal lehengas, ethnic wear, premium textiles, Indian fashion">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Jeelani Textiles">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Enhanced Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline'; 
+    style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; 
+    font-src 'self' https://fonts.gstatic.com; 
+    img-src 'self' data: https: blob:; 
+    connect-src 'self' https://firestore.googleapis.com https://firebasestorage.googleapis.com https://*.firebaseio.com;
+    frame-src 'none';
+  ">
+  
+  <link rel="canonical" href="https://jeelani-textiles.web.app/pages/products.html">
+
+  <!-- Social Meta Tags (Enhanced) -->
+  <meta property="og:title" content="Premium Ethnic Wear Collection | Jeelani Textiles">
+  <meta property="og:description" content="Discover authentic handcrafted Indian ethnic wear with free shipping on orders over ₹2999.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jeelani-textiles.web.app/pages/products.html">
+  <meta property="og:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jeelani Textiles premium ethnic wear collection">
+  <meta property="og:site_name" content="Jeelani Textiles">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@jeelanitextiles">
+  <meta name="twitter:title" content="Premium Ethnic Wear Collection | Jeelani Textiles">
+  <meta name="twitter:description" content="Handcrafted sarees, kurtis & lehengas with free shipping">
+  <meta name="twitter:image" content="https://jeelani-textiles.web.app/assets/images/social-share.jpg">
+
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+  <link rel="preconnect" href="https://firebasestorage.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preload" href="../css/style.css" as="style">
+  <link rel="preload" href="../assets/images/logo.webp" as="image">
+
+  <!-- Critical Inline CSS -->
+  <style>
+    /* CSS Variables */
+    :root {
+      --color-background: #ffffff;
+      --color-surface: #f8f9fa;
+      --color-text: #333333;
+      --color-text-secondary: #6c757d;
+      --color-primary-500: #f39c12;
+      --color-primary-600: #e08e0b;
+      --color-success: #27ae60;
+      --color-error: #e74c3c;
+      --color-border: #dee2e6;
+      --z-index-loader: 9999;
+      --z-index-modal: 1000;
+      --z-index-floating: 999;
+      --transition-theme: 0.4s ease;
+      --transition-base: 0.3s ease;
+      --border-radius: 8px;
+      --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --box-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    [data-theme="dark"] {
+      --color-background: #1a1a1a;
+      --color-surface: #2d2d2d;
+      --color-text: #f8f8f8;
+      --color-text-secondary: #b0b0b0;
+      --color-border: #404040;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      transition: background-color var(--transition-theme), color var(--transition-theme);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Accessibility Utilities */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary-500);
+      color: white;
+      padding: 8px 16px;
+      z-index: calc(var(--z-index-loader) + 1);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0 0 4px 0;
+      transition: top var(--transition-base);
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--color-background);
+      z-index: var(--z-index-loader);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-spinner {
+      border: 3px solid rgba(243, 156, 18, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid var(--color-primary-500);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Animations */
+    @keyframes slideFade {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-slide {
+      animation: slideFade 0.5s ease-out both;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Product Card Hover Effects */
+    .product-card {
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    /* Category Color Indicators */
+    [data-category="sarees"] .product-card { 
+      border-left: 4px solid #f39c12; 
+    }
+
+    [data-category="kurtis"] .product-card { 
+      border-left: 4px solid #6c5ce7; 
+    }
+
+    [data-category="lehengas"] .product-card { 
+      border-left: 4px solid #e84393; 
+    }
+
+    [data-category="new"] .product-card {
+      border-left: 4px solid #27ae60;
+      position: relative;
+    }
+
+    [data-category="new"] .product-card::before {
+      content: 'NEW';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--color-success);
+      color: white;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      z-index: 10;
+    }
+
+    /* Skeleton Loading States */
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        #e0e0e0 25%,
+        #f0f0f0 50%,
+        #e0e0e0 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite ease-in-out;
+      border-radius: var(--border-radius);
+      height: 300px;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    [data-theme="dark"] .skeleton {
+      background: linear-gradient(
+        90deg,
+        #2d2d2d 25%,
+        #3a3a3a 50%,
+        #2d2d2d 75%
+      );
+      background-size: 200% 100%;
+    }
+
+    /* State Messages */
+    .state-message {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--color-text-secondary);
+    }
+
+    .state-message svg {
+      margin: 0 auto 1.5rem;
+      color: var(--color-primary-500);
+      display: block;
+    }
+
+    .state-message h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+    }
+
+    .state-message p {
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Button Effects */
+    .btn--primary {
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-base), background-color var(--transition-base);
+    }
+
+    .btn--primary::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      top: 0;
+      left: 0;
+      transform: scale(0);
+      border-radius: 50%;
+      transition: transform 0.4s ease;
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      background-color: var(--color-primary-600);
+    }
+
+    .btn--primary:hover::after {
+      transform: scale(2);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0);
+    }
+
+    /* Collection Controls Responsive */
+    .collection-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .collection-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filter-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .controls-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Focus Visible (Keyboard Navigation) */
+    :focus-visible {
+      outline: 2px solid var(--color-primary-500);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Print Styles */
+    @media print {
+      .navbar, .footer, .floating-btn, #whatsappBubble, #backToTop {
+        display: none !important;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+    }
+  </style>
+
+  <!-- Fonts & Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jeelani Textiles">
+
+  <!-- Schema.org Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Premium Ethnic Wear Collection",
+    "description": "Handcrafted sarees, kurtis & lehengas. Authentic Indian textiles with modern designs.",
+    "url": "https://jeelani-textiles.web.app/pages/products.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jeelani-textiles.web.app"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Collection",
+          "item": "https://jeelani-textiles.web.app/pages/products.html"
+        }
+      ]
+    },
+    "provider": {
+      "@type": "Store",
+      "name": "Jeelani Textiles",
+      "url": "https://jeelani-textiles.web.app",
+      "logo": "https://jeelani-textiles.web.app/assets/images/logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "telephone": "+919845677415",
+      "priceRange": "₹₹"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ============================================
+       LOADER
+       Managed by: js/init.js
+       ============================================ -->
+  <div id="loader" class="loader" aria-label="Loading products" role="status">
+    <div class="loader-spinner"></div>
+    <span class="visually-hidden">Loading products, please wait...</span>
+  </div>
+
+  <!-- ============================================
+       SKIP NAVIGATION (Accessibility)
+       ============================================ -->
+  <a href="#productGrid" class="skip-link">Skip to products</a>
+
+  <!-- ============================================
+       NAVBAR
+       Managed by: js/app.js (menu toggle, theme toggle)
+       Managed by: js/managers/cart.js (cart count)
+       ============================================ -->
+  <header class="navbar section">
+    <div class="container navbar__container flex items-center justify-between">
+      <a href="../index.html" class="navbar__logo" aria-label="Jeelani Textiles Home">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="eager">
+      </a>
+      
+      <!-- Mobile Menu Toggle -->
+      <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+        ☰
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="../index.html" class="navbar__link">Home</a></li>
+          <li><a href="products.html" class="navbar__link active" aria-current="page">Collection</a></li>
+          <li><a href="faq.html" class="navbar__link">FAQ</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="admin-login.html" class="navbar__link">Admin</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Navbar Actions -->
+      <div class="navbar__actions flex gap-md">
+        <!-- Theme Toggle (handled by ThemeManager) -->
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="sun-icon hidden" aria-hidden="true">☀️</span>
+        </button>
+        
+        <!-- Cart Button (handled by CartManager) -->
+        <button id="checkoutCart" class="icon-btn" aria-label="Shopping cart, 0 items">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+          <span id="cartCount" class="badge" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main id="main-content" role="main">
+    <div class="container">
+      
+      <!-- Breadcrumbs (Enhanced SEO) -->
+      <nav class="breadcrumbs mb-md" aria-label="Breadcrumb" data-aos="fade-up">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="../index.html">
+              <span itemprop="name">Home</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name" aria-current="page">Collection</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="page-header" data-aos="fade-up">
+        <h1 class="section__title">Our Premium Collection</h1>
+        <p class="section__subtitle">Handcrafted with traditional artistry and modern elegance</p>
+      </div>
+
+      <!-- ============================================
+           PRODUCT CONTROLS
+           Managed by: js/managers/product.js
+           - Filter buttons
+           - Sort dropdown
+           - Search input
+           ============================================ -->
+      <div class="collection-controls" data-aos="fade-up" data-aos-delay="100">
+        <!-- Category Filter Buttons -->
+        <div class="filter-bar" role="tablist" aria-label="Product categories">
+          <button 
+            class="filter-btn active" 
+            data-category="all" 
+            aria-selected="true" 
+            role="tab" 
+            aria-controls="productGrid"
+            id="filter-all"
+          >
+            All Collections
+          </button>
+          <button 
+            class="filter-btn" 
+            data-category="sarees" 
+            aria-selected="false" 
+            role="tab" 
+            aria-controls="productGrid"
+            id="filter-sarees"
+          >
+            Sarees
+          </button>
+          <button 
+            class="filter-btn" 
+            data-category="kurtis" 
+            aria-selected="false" 
+            role="tab" 
+            aria-controls="productGrid"
+            id="filter-kurtis"
+          >
+            Kurtis
+          </button>
+          <button 
+            class="filter-btn" 
+            data-category="lehengas" 
+            aria-selected="false" 
+            role="tab" 
+            aria-controls="productGrid"
+            id="filter-lehengas"
+          >
+            Lehengas
+          </button>
+          <button 
+            class="filter-btn" 
+            data-category="new" 
+            aria-selected="false" 
+            role="tab" 
+            aria-controls="productGrid"
+            id="filter-new"
+          >
+            New Arrivals
+          </button>
+        </div>
+
+        <div class="controls-right">
+          <!-- Sort Dropdown -->
+          <div class="sort-select">
+            <label for="sortBy" class="visually-hidden">Sort products by</label>
+            <select id="sortBy" class="form-control" aria-label="Sort products">
+              <option value="latest">Newest First</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="popular">Most Popular</option>
+              <option value="name-asc">Name: A to Z</option>
+            </select>
+          </div>
+
+          <!-- Search Box -->
+          <div class="search-box">
+            <label for="searchInput" class="visually-hidden">Search products</label>
+            <div class="search-wrapper">
+              <input 
+                type="search" 
+                id="searchInput" 
+                placeholder="Search by fabric, color or design..." 
+                aria-controls="productGrid" 
+                aria-describedby="searchResults"
+                autocomplete="off"
+              >
+              <button 
+                id="searchClear" 
+                class="icon-btn" 
+                aria-label="Clear search" 
+                style="display: none;"
+                tabindex="-1"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+              </button>
+            </div>
+            <span id="searchResults" class="visually-hidden" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           PRODUCT GRID
+           Populated by: js/managers/product.js
+           Uses: Fuse.js for search
+           Features: Virtual scrolling, filters, sorting
+           ============================================ -->
+      <section 
+        id="productGrid" 
+        class="product-grid" 
+        aria-live="polite" 
+        aria-busy="false" 
+        role="region"
+        aria-label="Product catalog"
+      >
+        <!-- Products rendered dynamically by ProductManager.renderProducts() -->
+        <!-- Each product card has:
+             - data-product-id attribute
+             - data-category attribute
+             - Click handler for modal
+             - Add to cart button
+             - WhatsApp inquiry button
+        -->
+      </section>
+
+      <!-- ============================================
+           LOADING STATE
+           Shown by: js/managers/product.js while fetching
+           ============================================ -->
+      <div id="loadingState" class="state-message" role="status" aria-live="polite">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <span class="visually-hidden">Loading products...</span>
+      </div>
+
+      <!-- ============================================
+           ERROR STATE
+           Shown by: js/managers/product.js on fetch error
+           ============================================ -->
+      <div id="errorState" class="state-message error" hidden role="alert" aria-live="assertive">
+        <svg width="64" height="64" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+        </svg>
+        <h2>Unable to Load Products</h2>
+        <p>We're experiencing technical difficulties. Please check your connection and try again.</p>
+        <button id="retryButton" class="btn btn--primary" aria-label="Retry loading products">
+          Retry
+        </button>
+      </div>
+
+      <!-- ============================================
+           EMPTY STATE
+           Shown by: js/managers/product.js when no products
+           ============================================ -->
+      <div id="emptyState" class="state-message" hidden role="status" aria-live="polite">
+        <div id="emptyAnimation" style="width: 200px; height: 200px; margin: 0 auto;"></div>
+        <h2>Collection Updating</h2>
+        <p>We're refreshing our inventory with new arrivals. Check back soon for stunning new designs!</p>
+        <a href="contact.html" class="btn btn--outline">
+          Notify Me When Available
+        </a>
+      </div>
+
+      <!-- ============================================
+           NO RESULTS STATE
+           Shown by: js/managers/product.js on empty search
+           ============================================ -->
+      <div id="noResultsState" class="state-message" hidden role="status" aria-live="polite">
+        <svg width="64" height="64" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+        </svg>
+        <h2>No Products Found</h2>
+        <p id="noResultsMessage">Try adjusting your search or filters.</p>
+        <button id="clearFilters" class="btn btn--outline">
+          Clear All Filters
+        </button>
+      </div>
+
+      <!-- Load More Button (Pagination) -->
+      <div class="text-center mt-lg" id="loadMoreContainer" style="display: none;">
+        <button id="loadMore" class="btn btn--outline">
+          <span class="btn-text">Load More Products</span>
+          <span class="btn-loader hidden" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3a9 9 0 0 1 9 9"/>
+            </svg>
+          </span>
+        </button>
+        <p class="text-sm text-secondary mt-sm">
+          Showing <span id="currentCount">0</span> of <span id="totalCount">0</span> products
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================
+       PRODUCT DETAIL MODAL
+       Managed by: js/components/modal.js
+       Features: Image gallery, add to cart, WhatsApp
+       ============================================ -->
+  <div 
+    id="productModal" 
+    class="modal" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-hidden="true" 
+    aria-labelledby="modalTitle" 
+    hidden
+  >
+    <div class="modal-overlay" aria-hidden="true"></div>
+    <div class="modal-content" role="document">
+      <!-- Close Button -->
+      <button 
+        id="closeModal" 
+        class="icon-btn modal-close" 
+        aria-label="Close product details"
+        type="button"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </button>
+
+      <!-- Image Gallery -->
+      <div class="modal-gallery">
+        <img 
+          id="modalImg" 
+          src="" 
+          alt="" 
+          class="modal-image" 
+          loading="lazy"
+        >
+        <div class="thumbnail-track" role="list" aria-label="Product images">
+          <!-- Thumbnails rendered by ModalManager -->
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="modal-details">
+        <div class="product-header">
+          <h2 id="modalTitle"></h2>
+          <p id="modalPrice" class="price"></p>
+        </div>
+
+        <div class="product-meta">
+          <span id="modalCategory" class="category-badge"></span>
+          <p id="modalSKU" class="text-sm text-secondary">
+            SKU: <span></span>
+          </p>
+        </div>
+
+        <div class="product-description">
+          <h3>Description</h3>
+          <p id="modalDesc"></p>
+        </div>
+
+        <!-- Product Actions -->
+        <div class="product-actions">
+          <button 
+            id="addToCart" 
+            class="btn btn--primary" 
+            aria-label="Add to shopping cart"
+            type="button"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="margin-right: 8px;">
+              <path d="M12 4v16m8-8H4" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            Add to Cart
+          </button>
+          
+          <a 
+            id="modalWhatsApp" 
+            href="#" 
+            class="btn whatsapp-btn" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Enquire about this product on WhatsApp"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="margin-right: 8px;">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01z" fill="currentColor"/>
+            </svg>
+            Enquire on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer section">
+    <div class="container footer__container">
+      <div class="footer__grid grid">
+        <!-- Brand Column -->
+        <div class="footer__col">
+          <h3>Jeelani Textiles</h3>
+          <p>Preserving tradition through handcrafted ethnic wear since 1987.</p>
+          <div class="footer__social flex gap-md">
+            <a href="https://facebook.com/jeelanitextiles" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+              FB
+            </a>
+            <a href="https://instagram.com/jeelanitextiles" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+              IG
+            </a>
+            <a href="https://wa.me/919845677415" aria-label="Contact us on WhatsApp" target="_blank" rel="noopener noreferrer">
+              WA
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="products.html" aria-current="page">Collection</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div class="footer__col">
+          <h4>Customer Care</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="footer__col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for exclusive offers and new arrivals</p>
+          <form id="newsletterForm" class="newsletter__form" novalidate>
+            <label for="newsletterEmail" class="visually-hidden">Email address for newsletter</label>
+            <input 
+              type="email" 
+              id="newsletterEmail"
+              name="email"
+              placeholder="Your email" 
+              required 
+              aria-label="Email address"
+              autocomplete="email"
+            >
+            <button type="submit" class="btn btn--primary">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <p>© 2025 Jeelani Textiles. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       FLOATING ACTION BUTTONS
+       Managed by: js/app.js (scroll to top)
+       ============================================ -->
+  <button 
+    id="backToTop" 
+    class="floating-btn" 
+    aria-label="Scroll back to top" 
+    style="display: none;"
+    type="button"
+  >
+    ↑
+  </button>
+
+  <div id="whatsappBubble" class="floating-btn whatsapp">
+    <a 
+      href="https://wa.me/919845677415?text=Hi!%20I%20have%20a%20query%20about%20your%20products." 
+      aria-label="Contact us on WhatsApp" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src="../assets/images/whatsapp-icon.png" 
+        alt="" 
+        width="40" 
+        height="40" 
+        loading="lazy"
+        aria-hidden="true"
+      >
+      <span class="visually-hidden">WhatsApp us</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       CDN LIBRARIES (Load First)
+       Order matters: Libraries must load before app.js
+       ============================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/zod@3.23.8/lib/index.umd.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/zustand@4.5.2/umd/index.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.7.13/build/player/lottie.min.js" defer></script>
+  <script src="https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js" defer></script>
+
+  <!-- ============================================
+       MAIN APPLICATION ENTRY POINT
+       Loads after libraries via defer
+       ============================================ -->
+  <script type="module" src="../js/app.js"></script>
+
+  <!-- ============================================
+       CLOUDFLARE BOT PROTECTION
+       Keep as-is (required for security)
+       ============================================ -->
+  <script defer>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92b205ea4af57bd8',t:'MTc0Mzc4MjQ3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

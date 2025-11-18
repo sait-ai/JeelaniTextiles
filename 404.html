@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="theme-transition">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f39c12">
+  <meta name="robots" content="noindex">
+  <title>404 - Page Not Found | Jeelani Textiles</title>
+  <meta name="description" content="The page you are looking for cannot be found. Return to Jeelani Textiles' homepage to explore our handcrafted ethnic wear.">
+  <!-- Added basic CSP for security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+
+  <!-- Fonts & Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../assets/images/icons/icon-192x192.png">
+
+  <!-- Critical CSS -->
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .error-message {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .error-message h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0 0 var(--space-sm);
+    }
+    .error-message h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0 0 var(--space-md);
+    }
+    .error-message p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0 0 var(--space-lg);
+    }
+    @media (max-width: 600px) {
+      .error-message {
+        padding: var(--space-md);
+      }
+      .error-message h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Removed commented-out loader as per recommendation -->
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar__logo">
+        <img src="../assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="40" loading="lazy">
+      </a>
+      <nav class="navbar__menu" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="../index.html" class="navbar__link">Home</a></li>
+          <li><a href="../pages/products.html" class="navbar__link">Products</a></li>
+          <li><a href="../pages/faq.html" class="navbar__link">FAQ</a></li>
+          <li><a href="../pages/contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="../pages/admin-login.html" class="navbar__link">Admin</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__actions">
+        <button id="navToggle" class="icon-btn" aria-label="Menu" aria-expanded="false" aria-controls="mainNav">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <button id="themeToggle" class="icon-btn" aria-label="Switch to dark theme" data-label="Switch to dark theme">
+          <!-- Added aria-label for accessibility -->
+          <span class="theme-icon theme-icon--light" aria-label="Light mode">☀️</span>
+          <span class="theme-icon theme-icon--dark" style="display:none;" aria-label="Dark mode">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <div class="error-message">
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+      <!-- Enhanced error message for accessibility -->
+      <p>The page you requested was not found. Try returning to the <a href="../index.html">homepage</a> or contacting us at <a href="mailto:support@jeelanitextiles.com">support@jeelanitextiles.com</a>.</p>
+      <!-- Added FAQ link for navigation -->
+      <a href="../pages/faq.html" class="btn btn--outline">Visit FAQs</a>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      let currentTheme = localStorage.getItem('theme') || 'light';
+      html.setAttribute('data-theme', currentTheme);
+      themeToggle.querySelector('.theme-icon--light').style.display = currentTheme === 'dark' ? 'none' : 'block';
+      themeToggle.querySelector('.theme-icon--dark').style.display = currentTheme === 'dark' ? 'block' : 'none';
+      themeToggle.setAttribute('aria-label', currentTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+
+      themeToggle.addEventListener('click', () => {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        themeToggle.querySelector('.theme-icon--light').style.display = currentTheme === 'dark' ? 'none' : 'block';
+        themeToggle.querySelector('.theme-icon--dark').style.display = currentTheme === 'dark' ? 'block' : 'none';
+        themeToggle.setAttribute('aria-label', currentTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+      });
+
+      // Nav Toggle
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.style.display = isExpanded ? 'none' : 'block';
+      });
+
+      // Hide Loader (commented out as loader is removed)
+      // const loader = document.getElementById('loader');
+      // loader.style.opacity = '0';
+      // setTimeout(() => loader.style.display = 'none', 300);
+    });
+  </script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'938269d26e9f824b',t:'MTc0NTk2NzYwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
