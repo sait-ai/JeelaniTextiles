@@ -1,26 +1,47 @@
 {
   "name": "jeelani-textiles",
   "version": "1.0.0",
-  "description": "Jeelani Textiles Website",
-  "main": "script.js",
+  "description": "Jeelani Textiles - Handcrafted Ethnic Elegance E-Commerce Website",
+  "main": "js/app.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules/.vite",
+    "lint": "echo 'Linting not configured yet'",
+    "test": "echo 'Tests not configured yet'"
   },
   "dependencies": {
     "axe-core": "^4.8.2",
     "firebase": "^10.12.2",
+    "fuse.js": "^7.0.0",
     "proxy-polyfill": "^0.3.2",
+    "swiper": "^11.1.14",
     "web-vitals": "^3.5.0",
-    "zod": "^3.22.4",
+    "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@vitejs/plugin-legacy": "^7.2.1",
     "postcss-preset-env": "^10.4.0",
     "vite": "^7.2.2"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "Jeelani Textiles",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeelani-textiles/website"
+  },
+  "keywords": [
+    "ecommerce",
+    "textile",
+    "sarees",
+    "ethnic-wear",
+    "pwa"
+  ]
 }

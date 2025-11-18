@@ -1,142 +1,218 @@
 /**
- * @file state/store.js
- * @description Global state management with Zustand and Zod validation
+ * @file store.js
+ * @description Zustand state management store
  * @version 2.0.0
  */
 
-import { SafeStorage } from '../utils/storage.js';
-
-// Note: Zustand and Zod are loaded via CDN in HTML
-// Access via window.zustand and window.zod
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
 
 /**
- * Validation schemas
+ * Main application store using Zustand
  */
-const cartItemSchema = window.zod.object({
-  id: window.zod.string(),
-  name: window.zod.string(),
-  price: window.zod.number(),
-  qty: window.zod.number().positive(),
-  image: window.zod.string().optional(),
-  thumbnail: window.zod.string().optional()
-});
+export const useAppState = create(
+  devtools(
+    persist(
+      (set, get) => ({
+        // ============================================================================
+        // CART STATE
+        // ============================================================================
+        cart: [],
+        cartCount: 0,
+        cartTotal: 0,
 
-const cartSchema = window.zod.array(cartItemSchema);
+        addToCart: (product, quantity = 1) => {
+          const cart = get().cart;
+          const existingIndex = cart.findIndex(item => item.id === product.id);
 
-const settingsSchema = window.zod.object({
-  theme: window.zod.enum(['light', 'dark', 'sepia', 'high-contrast']),
-  gridSize: window.zod.number().int().min(2).max(4),
-  lang: window.zod.string().min(2).max(5)
-});
+          let newCart;
+          if (existingIndex > -1) {
+            newCart = cart.map((item, index) =>
+              index === existingIndex
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            newCart = [...cart, { ...product, quantity }];
+          }
 
-/**
- * Validate cart data
- * @param {Array} stored - Stored cart data
- * @returns {Array} Validated cart
- */
-const validateCart = (stored) => {
-  try {
-    const result = cartSchema.safeParse(stored);
-    return result.success ? result.data : [];
-  } catch {
-    return [];
-  }
-};
+          const cartTotal = newCart.reduce(
+            (sum, item) => sum + (item.price * item.quantity),
+            0
+          );
 
-/**
- * Validate settings data
- * @param {Object} stored - Stored settings
- * @returns {Object} Validated settings
- */
-const validateSettings = (stored) => {
-  try {
-    const result = settingsSchema.safeParse(stored);
-    return result.success ? result.data : {
-      theme: 'light',
-      gridSize: 3,
-      lang: 'en'
-    };
-  } catch {
-    return { theme: 'light', gridSize: 3, lang: 'en' };
-  }
-};
+          set({
+            cart: newCart,
+            cartCount: newCart.reduce((sum, item) => sum + item.quantity, 0),
+            cartTotal
+          });
+        },
 
-/**
- * Create Zustand store
- */
-export const useAppState = window.zustand.create((set, get) => ({
-  // State
-  products: [],
-  cart: validateCart(SafeStorage.getJSON('offlineCart', [])),
-  currentPage: 1,
-  lastVisible: null,
-  isLoading: false,
-  settings: validateSettings(SafeStorage.getJSON('userSettings', null)),
+        removeFromCart: (productId) => {
+          const cart = get().cart;
+          const newCart = cart.filter(item => item.id !== productId);
+          const cartTotal = newCart.reduce(
+            (sum, item) => sum + (item.price * item.quantity),
+            0
+          );
 
-  // Actions
-  setProducts: (products) => set({ products }),
-  addProducts: (newProducts) => set((state) => ({ 
-    products: [...state.products, ...newProducts] 
-  })),
-  
-  setCart: (cart) => {
-    const validated = validateCart(cart);
-    SafeStorage.setJSON('offlineCart', validated);
-    set({ cart: validated });
-  },
-  
-  updateCart: (updater) => {
-    const newCart = updater(get().cart);
-    const validated = validateCart(newCart);
-    SafeStorage.setJSON('offlineCart', validated);
-    set({ cart: validated });
-  },
-  
-  setSettings: (settings) => {
-    const validated = validateSettings(settings);
-    SafeStorage.setJSON('userSettings', validated);
-    set({ settings: validated });
-  },
-  
-  updateSettings: (updater) => {
-    const newSettings = updater(get().settings);
-    const validated = validateSettings(newSettings);
-    SafeStorage.setJSON('userSettings', validated);
-    set({ settings: validated });
-  },
-  
-  setCurrentPage: (page) => set({ currentPage: page }),
-  setLastVisible: (lastVisible) => set({ lastVisible }),
-  setLoading: (isLoading) => set({ isLoading })
-}));
+          set({
+            cart: newCart,
+            cartCount: newCart.reduce((sum, item) => sum + item.quantity, 0),
+            cartTotal
+          });
+        },
 
-/**
- * Proxy for backward compatibility with old script.js
- * @deprecated Use useAppState directly
- */
-export const appState = new Proxy({}, {
-  get(target, prop) {
-    return useAppState.getState()[prop];
-  },
-  set(target, prop, value) {
-    const state = useAppState.getState();
-    
-    if (prop === 'cart') {
-      state.setCart(value);
-    } else if (prop === 'settings') {
-      state.setSettings(value);
-    } else if (prop === 'products') {
-      state.setProducts(value);
-    } else if (prop === 'currentPage') {
-      state.setCurrentPage(value);
-    } else if (prop === 'lastVisible') {
-      state.setLastVisible(value);
-    } else if (prop === 'isLoading') {
-      state.setLoading(value);
-    }
-    
-    return true;
-  }
-});
+        updateCartQuantity: (productId, quantity) => {
+          if (quantity <= 0) {
+            get().removeFromCart(productId);
+            return;
+          }
+
+          const cart = get().cart;
+          const newCart = cart.map(item =>
+            item.id === productId ? { ...item, quantity } : item
+          );
+          const cartTotal = newCart.reduce(
+            (sum, item) => sum + (item.price * item.quantity),
+            0
+          );
+
+          set({
+            cart: newCart,
+            cartCount: newCart.reduce((sum, item) => sum + item.quantity, 0),
+            cartTotal
+          });
+        },
+
+        clearCart: () => {
+          set({ cart: [], cartCount: 0, cartTotal: 0 });
+        },
+
+        // ============================================================================
+        // PRODUCTS STATE
+        // ============================================================================
+        products: [],
+        filteredProducts: [],
+        activeCategory: 'all',
+        searchQuery: '',
+        loading: false,
+
+        setProducts: (products) => {
+          set({ products, filteredProducts: products });
+        },
+
+        filterByCategory: (category) => {
+          const products = get().products;
+          const filtered =
+            category === 'all'
+              ? products
+              : products.filter(p => p.category === category);
+
+          set({
+            activeCategory: category,
+            filteredProducts: filtered
+          });
+        },
+
+        searchProducts: (query) => {
+          const products = get().products;
+          const lowerQuery = query.toLowerCase();
+          const filtered = products.filter(
+            p =>
+              p.name.toLowerCase().includes(lowerQuery) ||
+              p.description?.toLowerCase().includes(lowerQuery)
+          );
+
+          set({
+            searchQuery: query,
+            filteredProducts: filtered
+          });
+        },
+
+        setLoading: (loading) => {
+          set({ loading });
+        },
+
+        // ============================================================================
+        // USER STATE
+        // ============================================================================
+        user: null,
+        isAuthenticated: false,
+
+        setUser: (user) => {
+          set({
+            user,
+            isAuthenticated: !!user
+          });
+        },
+
+        logout: () => {
+          set({
+            user: null,
+            isAuthenticated: false
+          });
+        },
+
+        // ============================================================================
+        // UI STATE
+        // ============================================================================
+        theme: 'light',
+        modalOpen: false,
+        mobileMenuOpen: false,
+        toastMessage: null,
+
+        setTheme: (theme) => {
+          set({ theme });
+        },
+
+        toggleModal: (open) => {
+          set({ modalOpen: open ?? !get().modalOpen });
+        },
+
+        toggleMobileMenu: (open) => {
+          set({ mobileMenuOpen: open ?? !get().mobileMenuOpen });
+        },
+
+        showToast: (message, type = 'info') => {
+          set({ toastMessage: { message, type, timestamp: Date.now() } });
+          setTimeout(() => set({ toastMessage: null }), 3000);
+        },
+
+        // ============================================================================
+        // WISHLIST STATE
+        // ============================================================================
+        wishlist: [],
+
+        addToWishlist: (product) => {
+          const wishlist = get().wishlist;
+          if (!wishlist.find(p => p.id === product.id)) {
+            set({ wishlist: [...wishlist, product] });
+          }
+        },
+
+        removeFromWishlist: (productId) => {
+          const wishlist = get().wishlist;
+          set({ wishlist: wishlist.filter(p => p.id !== productId) });
+        },
+
+        isInWishlist: (productId) => {
+          return get().wishlist.some(p => p.id === productId);
+        }
+      }),
+      {
+        name: 'jeelani-textiles-store',
+        partialize: (state) => ({
+          cart: state.cart,
+          cartCount: state.cartCount,
+          cartTotal: state.cartTotal,
+          wishlist: state.wishlist,
+          theme: state.theme
+        })
+      }
+    ),
+    { name: 'JeelaniTextiles' }
+  )
+);
 
 export default useAppState;

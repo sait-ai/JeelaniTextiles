@@ -1,95 +1,110 @@
 /**
- * @file utils/validation.js
- * @description Form validation and input sanitization utilities
+ * @file validation.js
+ * @description Form validation utilities using Zod
  * @version 2.0.0
  */
 
-/**
- * Input sanitization - Remove potentially dangerous characters
- * @param {string} str - Input string
- * @returns {string} Sanitized string
- */
-export function sanitize(str) {
-  return String(str).replace(/[<>&"']/g, '');
-}
+import { z } from 'zod';
 
 /**
- * Validate email format
- * @param {string} email - Email address
- * @returns {boolean}
+ * Email validation schema
  */
-export function isValidEmail(email) {
-  return /^\S+@\S+\.\S+$/.test(email);
-}
+export const emailSchema = z.string().email('Invalid email address');
 
 /**
- * Validate phone number (flexible format)
- * @param {string} phone - Phone number
- * @returns {boolean}
+ * Phone validation schema (Indian format)
  */
-export function isValidPhone(phone) {
-  return /^[0-9+\-\s()]{8,20}$/.test(phone);
-}
+export const phoneSchema = z.string().regex(
+  /^[6-9]\d{9}$/,
+  'Invalid phone number (10 digits starting with 6-9)'
+);
 
 /**
- * Validate required field
- * @param {string} value - Field value
- * @param {number} minLength - Minimum length
- * @returns {boolean}
+ * Contact form validation schema
  */
-export function isRequired(value, minLength = 1) {
-  return value && value.trim().length >= minLength;
-}
+export const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: emailSchema,
+  phone: phoneSchema.optional(),
+  message: z.string().min(10, 'Message must be at least 10 characters')
+});
 
 /**
- * Cookie utilities for CSRF protection
+ * Product validation schema
  */
-export const Cookie = {
-  /**
-   * Set cookie with expiration
-   * @param {string} name - Cookie name
-   * @param {string} value - Cookie value
-   * @param {number} days - Expiration in days
-   */
-  set(name, value, days) {
-    const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Strict`;
-  },
+export const productSchema = z.object({
+  name: z.string().min(3, 'Product name must be at least 3 characters'),
+  description: z.string().min(10, 'Description must be at least 10 characters'),
+  price: z.number().positive('Price must be positive'),
+  category: z.enum(['sarees', 'kurtis', 'lehengas', 'accessories']),
+  stock: z.number().int().nonnegative('Stock must be non-negative'),
+  images: z.array(z.string().url()).min(1, 'At least one image required')
+});
 
-  /**
-   * Get cookie value
-   * @param {string} name - Cookie name
-   * @returns {string}
-   */
-  get(name) {
-    return document.cookie.split('; ').reduce((r, v) => {
-      const parts = v.split('=');
-      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-    }, '');
-  },
+/**
+ * FAQ validation schema
+ */
+export const faqSchema = z.object({
+  question: z.string().min(5, 'Question must be at least 5 characters'),
+  answer: z.string().min(10, 'Answer must be at least 10 characters'),
+  order: z.number().int().nonnegative().optional()
+});
 
-  /**
-   * Delete cookie
-   * @param {string} name - Cookie name
-   */
-  delete(name) {
-    this.set(name, '', -1);
+/**
+ * Newsletter validation schema
+ */
+export const newsletterSchema = z.object({
+  email: emailSchema
+});
+
+/**
+ * Helper function to validate data against schema
+ */
+export function validate(schema, data) {
+  try {
+    return {
+      success: true,
+      data: schema.parse(data),
+      errors: null
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      errors: error.errors.map(err => ({
+        field: err.path.join('.'),
+        message: err.message
+      }))
+    };
   }
-};
+}
 
 /**
- * Generate CSRF token
- * @returns {string}
+ * Helper to validate single field
  */
-export function generateCSRFToken() {
-  return crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+export function validateField(schema, field, value) {
+  try {
+    const fieldSchema = schema.shape[field];
+    if (!fieldSchema) {
+      throw new Error(`Field ${field} not found in schema`);
+    }
+    fieldSchema.parse(value);
+    return { valid: true, error: null };
+  } catch (error) {
+    return {
+      valid: false,
+      error: error.errors[0]?.message || 'Validation failed'
+    };
+  }
 }
 
 export default {
-  sanitize,
-  isValidEmail,
-  isValidPhone,
-  isRequired,
-  Cookie,
-  generateCSRFToken
+  emailSchema,
+  phoneSchema,
+  contactSchema,
+  productSchema,
+  faqSchema,
+  newsletterSchema,
+  validate,
+  validateField
 };

@@ -14,7 +14,7 @@
   <meta name="color-scheme" content="light dark" />
 
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://firestore.googleapis.com https://*.firebaseio.com https://ipapi.co; frame-src 'self' https://www.google.com https://maps.google.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com https://unpkg.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://firestore.googleapis.com https://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://ipapi.co; frame-src 'self' https://www.google.com https://maps.google.com;" />
 
   <!-- Social Meta -->
   <meta property="og:title" content="Jeelani Textiles – Handcrafted Ethnic Elegance" />
@@ -33,13 +33,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://firestore.googleapis.com" />
   <link rel="preload" href="css/style.css" as="style" />
-  <link rel="preload" href="assets/images/hero-bg.webp" as="image" />
+  <!-- Removed broken image preload - will add when assets exist -->
+  <!-- <link rel="preload" href="assets/images/hero-bg.webp" as="image" /> -->
   <link rel="manifest" href="/manifest.json" />
 
-  <!-- Favicons -->
-  <link rel="icon" href="assets/images/favicon-light.ico" media="(prefers-color-scheme: light)" />
-  <link rel="icon" href="assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)" />
-  <link rel="apple-touch-icon" href="assets/images/icons/icon-192x192.png" />
+  <!-- Favicons - Commented until assets exist -->
+  <!-- <link rel="icon" href="assets/images/favicon-light.ico" media="(prefers-color-scheme: light)" /> -->
+  <!-- <link rel="icon" href="assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)" /> -->
+  <!-- <link rel="apple-touch-icon" href="assets/images/icons/icon-192x192.png" /> -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
   <!-- Schema.org Structured Data -->
@@ -89,7 +90,7 @@
     .loader {
       position: fixed;
       inset: 0;
-      background: var(--color-background);
+      background: #fff;
       z-index: var(--z-index-loader);
       display: grid;
       place-items: center;
@@ -98,444 +99,303 @@
 
     .loader-spinner {
       border: 4px solid rgba(243, 156, 18, 0.2);
-      border-top: 4px solid var(--color-primary-500);
+      border-top-color: var(--color-primary-500);
       border-radius: 50%;
       width: 40px;
       height: 40px;
-      animation: spin 1s ease-in-out infinite;
-    }
-
-    .loader-progress {
-      font-size: 1.2rem;
-      color: var(--color-primary-500);
+      animation: spin 1s linear infinite;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
+    .loader-text {
+      margin-top: 1rem;
+      color: var(--color-primary-500);
+      font-size: 0.875rem;
+    }
+
+    /* Skip link accessibility */
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
       background: var(--color-primary-500);
       color: white;
-      padding: 8px;
-      z-index: 100;
-      transition: top 0.3s;
-    }
-
-    .skip-link:focus { top: 0; }
-
-    :root[data-theme="light"] {
-      --color-background: #fff;
-      --color-text: #333;
-      --color-primary-500: #f39c12;
-    }
-
-    :root[data-theme="dark"] {
-      --color-background: #333;
-      --color-text: #fff;
-      --color-primary-500: #f39c12;
-    }
-
-    body {
-      background-color: var(--color-background);
-      color: var(--color-text);
-      transition: background-color var(--transition-theme), color var(--transition-theme);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 { font-size: var(--font-size-h1); }
-    h2 { font-size: var(--font-size-h2); }
-    h3 { font-size: var(--font-size-h3); }
-
-    .btn, .navbar__link {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 10px 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s;
-    }
-
-    .btn:active::after {
-      width: 200%;
-      height: 200%;
-    }
-
-    .btn:hover, .navbar__link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn:active, .navbar__link:active { transform: scale(0.98); }
-
-    :focus {
-      outline: 2px solid var(--color-primary-500);
-      outline-offset: 2px;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 300px;
-      border: 0;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      [data-aos], .loader-spinner { animation: none !important; opacity: 1 !important; }
-    }
-
-    @media (max-width: 768px) {
-      :root { --font-size-h1: 2rem; --font-size-h2: 1.75rem; }
-
-      .navbar__menu {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: var(--color-background);
-      }
-
-      .navbar__menu.active {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--color-background);
-        z-index: 1000;
-        overflow-y: auto;
-      }
-
-      body.menu-open { overflow: hidden; }
-
-      #menuToggle { display: block; }
-
-      .hero__container { grid-template-columns: 1fr; text-align: center; }
-
-      .hero__image-wrapper { margin-top: 20px; }
-
-      .map-container iframe { height: 200px; }
-    }
-
-    #menuToggle { display: none; }
-
-    .hero__image-wrapper {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .floating-btn {
-      animation: pulse 2s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .navbar {
-      padding: 20px 0;
-      transition: padding 0.3s;
-    }
-
-    .navbar.shrink { padding: 10px 0; }
-
-    .product-card {
-      transition: transform 0.3s;
-    }
-
-    .product-card:hover {
-      transform: rotate(3deg) scale(1.05);
-    }
-
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      animation: slideIn 0.5s ease-in-out;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(100px); }
-      to { transform: translateY(0); }
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-    }
-
-    .modal-content {
-      background-color: var(--color-background);
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
-      border-radius: 8px;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      line-height: 1;
-    }
-
-    .close:hover, .close:focus {
-      color: #000;
+      padding: 0.5rem 1rem;
       text-decoration: none;
+      z-index: 100;
     }
 
-    #scrollIndicator {
-      position: fixed;
+    .skip-link:focus {
       top: 0;
-      left: 0;
-      height: 5px;
-      background: var(--color-primary-500);
-      width: 0;
+    }
+
+    /* Basic body styles */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navbar placeholder */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
   </style>
 
-  <!-- Fonts & Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- External Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <!-- Scroll Indicator -->
-  <div id="scrollIndicator"></div>
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollIndicator" style="position: fixed; top: 0; left: 0; height: 5px; background: var(--color-primary-500); width: 0%; z-index: 10000; transition: width 0.1s;"></div>
 
-  <!-- Skip Navigation -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Loader -->
-  <div id="loader" class="loader" aria-live="polite" aria-labelledby="loader-label">
-    <div class="loader-spinner" aria-hidden="true"></div>
-    <span class="loader-progress" aria-hidden="true">0%</span>
-    <span id="loader-label" class="visually-hidden">Loading progress</span>
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader" aria-live="polite" aria-busy="true">
+    <div>
+      <div class="loader-spinner" aria-hidden="true"></div>
+      <div class="loader-text" id="loaderText">Loading... <span id="loaderPercent">0%</span></div>
+    </div>
   </div>
 
-  <!-- Navbar -->
-  <header class="navbar section">
-    <div class="container navbar__container">
+  <!-- Header / Navigation -->
+  <header class="navbar" role="banner">
+    <div class="container navbar__content">
+      <!-- Logo - placeholder text until image exists -->
       <a href="/" class="navbar__logo" aria-label="Jeelani Textiles Home">
-        <img src="assets/images/logo.webp" alt="Jeelani Textiles Logo" width="150" height="50" loading="lazy" />
+        <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--color-primary-500);">Jeelani Textiles</span>
       </a>
-      <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
-      <nav id="mainNav" class="navbar__menu" aria-label="Main navigation">
+
+      <!-- Mobile Menu Toggle -->
+      <button id="menuToggle" class="navbar__toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <!-- Navigation Menu -->
+      <nav id="mainNav" class="navbar__nav" role="navigation">
         <ul class="navbar__list">
-          <li><a href="/" class="navbar__link active" aria-current="page">Home</a></li>
-          <li><a href="/pages/products.html" class="navbar__link">Collection</a></li>
+          <li><a href="/" class="navbar__link" aria-current="page">Home</a></li>
+          <li><a href="/pages/products.html" class="navbar__link">Products</a></li>
           <li><a href="/pages/faq.html" class="navbar__link">FAQ</a></li>
           <li><a href="/pages/contact.html" class="navbar__link">Contact</a></li>
           <li><a href="/pages/admin-login.html" class="navbar__link">Admin</a></li>
         </ul>
       </nav>
+
+      <!-- Search & Theme Toggle -->
       <div class="navbar__actions">
-        <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products" />
-        <button id="themeToggle" class="icon-btn" aria-label="Switch to dark theme" data-tooltip="Toggle theme">
-          <span class="moon-icon" aria-hidden="true">🌙</span>
-          <span class="sun-icon" style="display:none;" aria-hidden="true">☀️</span>
+        <input type="search" id="searchInput" class="navbar__search" placeholder="Search products..." aria-label="Search products" />
+        <button id="themeToggle" class="navbar__theme-toggle" aria-label="Toggle dark mode">
+          <span aria-hidden="true" class="theme-icon-light">🌙</span>
+          <span aria-hidden="true" class="theme-icon-dark" style="display: none;">☀️</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main id="main-content">
+  <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="hero section" role="banner">
-      <div class="container hero__container grid">
-        <div data-aos="fade-right">
-          <h1 class="hero__title">Elevate Your Elegance with <span class="text-highlight">Jeelani Textiles</span></h1>
-          <p class="hero__subtitle">Discover handloom sarees, designer kurtis, and bridal lehengas that blend tradition with trend. Handcrafted for the modern connoisseur.</p>
-          <div class="hero__cta-group">
-            <a href="/pages/products.html" class="btn btn--primary" data-aos="zoom-in">Explore Collection</a>
-            <a href="#featured" class="btn btn--outline" data-aos="zoom-in" data-aos-delay="150">Featured Picks</a>
-          </div>
+    <section class="hero" style="min-height: 400px; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); display: flex; align-items: center; justify-content: center; color: white;">
+      <div class="container hero__content" style="text-align: center;">
+        <h1 class="hero__title" data-aos="fade-right" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">
+          Elevate Your <span style="color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Elegance</span>
+        </h1>
+        <p class="hero__subtitle" data-aos="fade-right" data-aos-delay="100" style="font-size: 1.125rem; margin-bottom: 2rem;">
+          Discover timeless handcrafted ethnic wear – from ethereal sarees to regal lehengas
+        </p>
+        <div class="hero__actions" data-aos="fade-up" data-aos-delay="200">
+          <a href="/pages/products.html" class="btn btn--primary" style="display: inline-block; padding: 0.75rem 2rem; background: #fff; color: #f39c12; text-decoration: none; border-radius: 4px; font-weight: 600; margin-right: 1rem;">Shop Collection</a>
+          <a href="#featured" class="btn btn--outline" style="display: inline-block; padding: 0.75rem 2rem; border: 2px solid #fff; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600;">Explore</a>
         </div>
-        <div class="hero__image-wrapper" data-aos="fade-left" aria-label="Jeelani Textiles Collection" style="background: url('assets/images/hero-bg.webp') no-repeat center; background-attachment: fixed; background-size: cover; height: 400px;"></div>
       </div>
     </section>
 
-    <!-- Featured Products -->
-    <section id="featured" class="section featured-products">
+    <!-- Featured Products Section -->
+    <section id="featured" class="featured-products" style="padding: 4rem 0;">
       <div class="container">
-        <h2 class="section__title text-center" data-aos="fade-up">Handpicked Favorites</h2>
-        <p class="section__subtitle text-center" data-aos="fade-up" data-aos-delay="50">Curated collections for every occasion</p>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 1rem;" data-aos="fade-up">Featured Picks</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 3rem;" data-aos="fade-up" data-aos-delay="100">Curated collection of our finest pieces</p>
 
-        <div class="filter-bar" role="tablist" aria-label="Product filters">
-          <button class="filter-btn active" data-category="all" role="tab" aria-selected="true" aria-controls="productGrid">All</button>
-          <button class="filter-btn" data-category="sarees" role="tab" aria-selected="false" aria-controls="productGrid">Sarees</button>
-          <button class="filter-btn" data-category="kurtis" role="tab" aria-selected="false" aria-controls="productGrid">Kurtis</button>
-          <button class="filter-btn" data-category="lehengas" role="tab" aria-selected="false" aria-controls="productGrid">Lehengas</button>
-          <button class="filter-btn" data-category="new" role="tab" aria-selected="false" aria-controls="productGrid">New Arrivals</button>
+        <!-- Filter Bar -->
+        <div class="filter-bar" role="tablist" aria-label="Product categories" data-aos="fade-up" data-aos-delay="200" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+          <button class="filter-btn active" role="tab" aria-selected="true" aria-controls="productGrid" data-category="all" style="padding: 0.5rem 1.5rem; border: 2px solid #f39c12; background: #f39c12; color: white; border-radius: 4px; cursor: pointer; font-weight: 500;">All</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="productGrid" data-category="sarees" style="padding: 0.5rem 1.5rem; border: 2px solid #f39c12; background: transparent; color: #f39c12; border-radius: 4px; cursor: pointer; font-weight: 500;">Sarees</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="productGrid" data-category="kurtis" style="padding: 0.5rem 1.5rem; border: 2px solid #f39c12; background: transparent; color: #f39c12; border-radius: 4px; cursor: pointer; font-weight: 500;">Kurtis</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="productGrid" data-category="lehengas" style="padding: 0.5rem 1.5rem; border: 2px solid #f39c12; background: transparent; color: #f39c12; border-radius: 4px; cursor: pointer; font-weight: 500;">Lehengas</button>
+          <button class="filter-btn" role="tab" aria-selected="false" aria-controls="productGrid" data-category="new" style="padding: 0.5rem 1.5rem; border: 2px solid #f39c12; background: transparent; color: #f39c12; border-radius: 4px; cursor: pointer; font-weight: 500;">New Arrivals</button>
         </div>
 
-        <div class="swiper-container">
-          <div class="swiper-wrapper" id="productGrid" role="tabpanel" aria-live="polite">
-            <!-- Products loaded by ProductManager -->
+        <!-- Swiper Container (Products loaded by ProductManager) -->
+        <div class="swiper product-swiper" data-aos="zoom-in" aria-live="polite" style="margin-bottom: 2rem;">
+          <div id="productGrid" class="swiper-wrapper" role="tabpanel">
+            <!-- Products will be inserted here by ProductManager -->
+            <div style="text-align: center; padding: 4rem 2rem; color: #999;">
+              <p>Loading products...</p>
+            </div>
           </div>
           <div class="swiper-pagination"></div>
-          <div class="swiper-button-next" aria-label="Next slide"></div>
-          <div class="swiper-button-prev" aria-label="Previous slide"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
 
-        <div class="text-center" data-aos="fade-up">
-          <button id="loadMore" class="btn btn--outline">Load More</button>
+        <div style="text-align: center;">
+          <button id="loadMore" class="btn btn--outline" style="padding: 0.75rem 2rem; border: 2px solid #f39c12; background: transparent; color: #f39c12; border-radius: 4px; cursor: pointer; font-weight: 500;">Load More</button>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section testimonials" data-theme="light">
+    <!-- Testimonials Section -->
+    <section class="testimonials" data-theme="light" style="background: #f9f9f9; padding: 4rem 0;">
       <div class="container">
-        <h2 class="section__title text-center" data-aos="fade-up">Stories of Elegance</h2>
-        <div class="testimonial-grid" data-aos="fade-up">
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 3rem;" data-aos="fade-up">What Our Customers Say</h2>
+        <div class="testimonial-grid" data-aos="fade-up" data-aos-delay="200" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
           <!-- Testimonials loaded by TestimonialManager -->
+          <p style="text-align: center; color: #999; grid-column: 1 / -1;">Loading testimonials...</p>
         </div>
       </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="section contact-cta">
-      <div class="container grid">
-        <div data-aos="fade-right">
-          <h2 class="section__title">Need Personal Assistance?</h2>
-          <p class="contact-intro">Our textile experts are ready to help you find the perfect outfit.</p>
-          <div class="contact-methods">
-            <a href="tel:+919845677415" class="contact-link" data-aos="fade-up">
-              <span class="contact-icon">📞</span>
-              <span>+91 98456 77415</span>
+    <!-- Contact CTA Section -->
+    <section class="contact-cta" style="padding: 4rem 0;">
+      <div class="container">
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 1rem;" data-aos="fade-up">Get in Touch</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 3rem;" data-aos="fade-up" data-aos-delay="100">We'd love to hear from you</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <!-- Contact Methods -->
+          <div style="text-align: center;" data-aos="fade-up" data-aos-delay="0">
+            <a href="tel:+919845677415" style="display: inline-block; padding: 1rem 2rem; background: #f39c12; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">
+              <span aria-hidden="true">📞</span> Call Us: +91-98456-77415
             </a>
-            <a href="https://wa.me/919845677415" class="contact-link" data-aos="fade-up" data-aos-delay="100">
-              <span class="contact-icon">💬</span>
-              <span>Chat on WhatsApp</span>
+          </div>
+
+          <div style="text-align: center;" data-aos="fade-up" data-aos-delay="100">
+            <a href="https://wa.me/919845677415" style="display: inline-block; padding: 1rem 2rem; background: #25D366; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">
+              <span aria-hidden="true">💬</span> WhatsApp Chat
             </a>
-            <a href="mailto:info@jeelanitextiles.com" class="contact-link" data-aos="fade-up" data-aos-delay="200">
-              <span class="contact-icon">✉️</span>
-              <span>info@jeelanitextiles.com</span>
+          </div>
+
+          <div style="text-align: center;" data-aos="fade-up" data-aos-delay="200">
+            <a href="mailto:contact@jeelanitextiles.com" style="display: inline-block; padding: 1rem 2rem; background: #333; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">
+              <span aria-hidden="true">✉️</span> Email Us
             </a>
           </div>
         </div>
-        <div class="map-container" data-aos="fade-left">
-          <iframe data-src="https://maps.google.com/maps?q=12.3197099,76.6557312&z=15&output=embed" loading="lazy" title="Jeelani Textiles Location" aria-label="Our store location in Mysuru"></iframe>
+
+        <!-- Google Maps -->
+        <div style="margin-top: 3rem;" data-aos="fade-up">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5!3d13.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzAwLjAiTiA3N8KwMzAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%" 
+            height="300" 
+            style="border:0; border-radius: 8px;" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Jeelani Textiles Location"
+            aria-label="Google Maps location of Jeelani Textiles">
+          </iframe>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer section">
-    <div class="container grid">
-      <div class="footer-brand">
-        <img src="assets/images/logo-light.webp" alt="Jeelani Textiles" width="150" loading="lazy" />
-        <p>Celebrating tradition through handcrafted textiles since 1987.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/jeelanitextiles" aria-label="Facebook"><span>FB</span></a>
-          <a href="https://www.instagram.com/jeelanitextiles" aria-label="Instagram"><span>IG</span></a>
+  <footer class="footer" style="background: #1a1a1a; color: #ccc; padding: 3rem 0 1rem;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+        <!-- Brand -->
+        <div>
+          <h3 style="color: white; font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Jeelani Textiles</h3>
+          <p style="margin-bottom: 1rem;">Crafting elegance since generations. Premium handloom ethnic wear.</p>
+          <div style="display: flex; gap: 1rem;">
+            <a href="https://www.facebook.com/jeelanitextiles" aria-label="Facebook" style="color: #f39c12; font-size: 1.5rem;">FB</a>
+            <a href="https://www.instagram.com/jeelanitextiles" aria-label="Instagram" style="color: #f39c12; font-size: 1.5rem;">IG</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 style="color: white; margin-bottom: 1rem;">Quick Links</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.5rem;"><a href="/pages/products.html" style="color: #ccc; text-decoration: none;">Products</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="/pages/faq.html" style="color: #ccc; text-decoration: none;">FAQ</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="/pages/contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="/pages/privacy.html" style="color: #ccc; text-decoration: none;">Privacy Policy</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="/pages/terms.html" style="color: #ccc; text-decoration: none;">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 style="color: white; margin-bottom: 1rem;">Contact</h3>
+          <address style="font-style: normal; line-height: 1.8;">
+            123 Textile Street<br />
+            Bengaluru, Karnataka 560001<br />
+            India<br />
+            Phone: +91-98456-77415
+          </address>
         </div>
       </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="/pages/products.html">Shop Collection</a></li>
-          <li><a href="/pages/care-guide.html">Fabric Care</a></li>
-          <li><a href="/pages/sizing.html">Size Guide</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <address>
-          350/24, MG Road<br>
-          Mysuru – 570004<br>
-          Karnataka, India
-        </address>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Jeelani Textiles. All rights reserved.</p>
-      <div class="legal-links">
-        <a href="/pages/privacy.html">Privacy Policy</a>
-        <a href="/pages/terms.html">Terms of Service</a>
+
+      <div style="border-top: 1px solid #333; padding-top: 1rem; text-align: center;">
+        <p>&copy; <span id="currentYear">2025</span> Jeelani Textiles. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to Top -->
-  <button id="backToTop" class="floating-btn" aria-label="Back to top" data-aos="fade-up">↑</button>
+  <button id="backToTop" class="floating-btn" aria-label="Back to top" data-aos="fade-up" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; background: #f39c12; color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 1.5rem; display: none; z-index: 1000;">↑</button>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/919845677415" class="floating-whatsapp" aria-label="Chat on WhatsApp">
-    <img src="assets/images/whatsapp-icon.png" alt="WhatsApp Chat" width="50" height="50" loading="lazy" />
+  <a href="https://wa.me/919845677415" class="floating-whatsapp" aria-label="Chat on WhatsApp" style="position: fixed; bottom: 80px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; font-size: 2rem; text-decoration: none;">
+    <span aria-hidden="true" style="color: white;">💬</span>
   </a>
 
   <!-- Newsletter Modal -->
-  <div id="newsletterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true">
-    <div class="modal-content">
-      <button type="button" class="close" aria-label="Close newsletter dialog">
+  <div id="newsletterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: white; padding: 2rem; border-radius: 8px; max-width: 500px; width: 90%; position: relative;">
+      <button type="button" class="close" aria-label="Close newsletter dialog" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #999;">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h2 id="newsletter-title">Subscribe to Our Newsletter</h2>
-      <p>Get 5% off your first order!</p>
+      <h2 id="newsletter-title" style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem;">Subscribe to Our Newsletter</h2>
+      <p style="color: #666; margin-bottom: 1.5rem;">Get 5% off your first order!</p>
       <form id="newsletterForm">
-        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
-        <button type="submit" class="btn btn--primary">Subscribe</button>
+        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 4px; margin-bottom: 1rem; font-size: 1rem;" />
+        <button type="submit" class="btn btn--primary" style="width: 100%; padding: 0.75rem; background: #f39c12; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 1rem;">Subscribe</button>
       </form>
     </div>
   </div>
 
-  <!-- CDN Libraries (Load First) -->
-  <script src="https://cdn.jsdelivr.net/npm/zod@3.23.8/lib/index.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/zustand@4.5.2/umd/index.js"></script>
+  <!-- CDN Libraries - Only the ones actually used -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/hammerjs@2.0.8/hammer.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://unpkg.com/@barba/core"></script>
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
   <script src="https://unpkg.com/fuse.js/dist/fuse.min.js"></script>
 
-  <!-- Main Application Entry Point (ONLY ONE MODULE SCRIPT) -->
+  <!-- Main Application Entry Point (ES6 Module) -->
   <script type="module" src="js/app.js"></script>
+
+  <!-- Update copyright year -->
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
